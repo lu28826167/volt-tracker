@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#090e19" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="description" content="VOLT workout tracker — total-rep progression, workout timer and automatic rest timer." />
+<title>VOLT · Workout & Progression</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<style>
+:root {color-scheme:dark;--bg:#090e19;--panel:#121e32;--panel2:#182740;--line:#2a3c58;--text:#ecf5ff;--muted:#9caec8;--accent:#5ee7c5;--blue:#92baff;--orange:#ffc57a;--red:#ff96a1}
+*{box-sizing:border-box}html{-webkit-tap-highlight-color:transparent}body{background:radial-gradient(ellipse at 50% -10%,#1a3250,transparent 55%),var(--bg);background-attachment:fixed;margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--text);min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #a0d1ff;outline-offset:2px}
+.wrap{width:min(940px,100%);margin:auto;padding:calc(22px + env(safe-area-inset-top)) 16px 100px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px}.eyebrow{font-weight:850;letter-spacing:.16em;font-size:11px;color:var(--accent)}h1{letter-spacing:-.045em;line-height:1.1;font-size:clamp(30px,5vw,42px);margin:5px 0}.sub{color:var(--muted);margin:5px 0 0}.logo{padding:15px;border:1px solid #32645b;border-radius:15px;background:#164037;color:var(--accent);font-weight:950;letter-spacing:.05em}
+.top-actions{display:flex;gap:8px;align-items:center;flex:0 0 auto}.iconbtn{min-width:46px;height:46px;border-radius:13px;background:#152238;border:1px solid #36506c;color:var(--text);font-size:20px;font-weight:800;padding:0 11px}.iconbtn.install{font-size:13px;color:#b7ffe8;border-color:var(--accent);background:#16483f}
+.hero{background:linear-gradient(130deg,#172a43,#122239);border:1px solid #314761;border-radius:21px;padding:21px;margin:22px 0 14px}.hero-title{font-weight:900;letter-spacing:-.03em;font-size:25px;margin:6px 0}.hero p{font-size:13px;color:#afc1d8}.eyeline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.chip{display:inline-flex;align-items:center;border-radius:999px;background:#24354d;padding:4px 9px;font-size:12px;font-weight:750;color:#cfdeed}.chip.positive{background:#19463e;color:#85f7d6}.chip.warn{background:#4a3927;color:#ffd6a7}
+.daynav{display:flex;gap:8px;overflow-x:auto;padding:5px 1px 10px;scrollbar-width:thin}.daynav button{flex:0 0 auto;border:1px solid #36506c;border-radius:12px;background:#152238;color:var(--text);padding:10px 13px;font-weight:800}.daynav button.active{background:#16483f;border-color:var(--accent);color:#b7ffe8}.daynav span{font-size:11px;color:var(--muted);display:block;font-weight:500}.daynav button.active span{color:#99ddc8}
+.primary{background:var(--accent);border:0;color:#073026;padding:13px 18px;border-radius:12px;font-weight:900}.secondary{background:#213550;border:1px solid #3a5675;color:#e5efff;padding:11px 14px;border-radius:12px;font-weight:800}.danger{color:#ffb4bd;border-color:#74424f}.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.full{width:100%}.big-start{font-size:19px;padding:18px;letter-spacing:.01em}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 22px}.metric{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:12px}.metric b{display:block;font-size:25px;letter-spacing:-.04em}.metric span{color:var(--muted);font-size:11px}
+.timer-strip{position:sticky;top:0;z-index:10;background:rgba(9,15,27,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #2d435d;margin:0 -16px;padding:calc(12px + env(safe-area-inset-top)) 16px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.timer-strip b{display:block;font-size:25px;letter-spacing:.02em;font-variant-numeric:tabular-nums}.timer-strip span{display:block;font-size:11px;color:var(--muted)}.timer-strip .primary{padding:11px 14px}.session-top{margin:18px 0 12px}.session-top h2{font-size:23px;margin:4px 0;letter-spacing:-.025em}.session-top p{font-size:13px;margin:2px 0;color:var(--muted)}
+.ex{background:var(--panel);border:1px solid var(--line);border-radius:16px;margin:12px 0;overflow:hidden}.ex-head{padding:15px;display:flex;gap:12px;align-items:start;justify-content:space-between}.ex-title{font-size:16px;line-height:1.28;font-weight:850}.ex-sub{font-size:12px;color:var(--muted);margin-top:5px}.ex-side{text-align:right;min-width:90px}.ex-side strong{font-size:15px;color:var(--accent);display:block}.ex-side span{font-size:11px;color:var(--muted)}.ex-content{padding:0 15px 15px}.lastnote{color:#bdd0e6;font-size:11px;padding:0 0 12px}.inputrow{display:grid;grid-template-columns:145px 1fr;gap:10px}.fieldlabel{font-size:11px;color:var(--muted);font-weight:750;display:block;margin-bottom:5px}.field-input{width:100%;border:1px solid #425771;border-radius:10px;background:#0a1729;padding:10px 9px;color:var(--text);font-size:17px;font-weight:750;min-width:0}.field-input:focus{border-color:var(--accent)}.sets{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.set label{display:block;text-align:center;font-size:11px;color:var(--muted);font-weight:750;margin-bottom:5px}.set input{width:100%;border:1px solid #425771;border-radius:10px;background:#0a1729;color:var(--text);text-align:center;font-weight:800;font-size:18px;padding:9px 2px;min-width:0}
+.setcheck{display:block;width:100%;margin-top:6px;height:40px;border-radius:10px;border:1px solid #425771;background:#0f1c30;color:#62799a;font-weight:950;font-size:19px;line-height:1;padding:0}.set.done input{border-color:var(--accent);background:#0c2a29;color:#c8fff0}.set.done .setcheck{background:var(--accent);border-color:var(--accent);color:#073026}.set.done label{color:var(--accent)}
+.shake{animation:shake .35s}@keyframes shake{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.progress{margin-top:12px;background:#17283e;border:1px solid #304a67;border-radius:12px;padding:11px 12px}.progress-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.progress strong{font-size:17px;font-variant-numeric:tabular-nums}.progress span{font-size:12px;color:var(--muted)}.progress .track{background:#0a1527;border-radius:20px;overflow:hidden;height:7px;margin:8px 0}.progress .fill{height:100%;width:0;background:linear-gradient(90deg,#82b6ff,var(--accent));transition:width .15s}.progress .progress-note{font-size:11px;color:var(--muted)}.progress .progress-note.good{color:var(--accent);font-weight:800}
+details{border-top:1px dashed #344a65;margin-top:13px;padding-top:12px}summary{cursor:pointer;color:#abcbf3;font-size:12px;font-weight:800}details .settings{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding-top:10px}details input{font-size:15px}.small-note{font-size:12px;color:var(--muted)}
+.section-title{font-size:20px;margin:25px 0 8px;letter-spacing:-.03em}.session-entry{padding:12px 0;border-bottom:1px solid #2d405c}.session-entry strong{display:block}.session-entry span{font-size:12px;color:var(--muted)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}.panel p{font-size:12px;color:var(--muted)}.foot{border-top:1px solid #30425c;margin-top:30px;padding:22px 0}.foot p{font-size:12px;color:var(--muted)}.inline-note{font-size:12px;color:#ffcd93;margin-top:9px}.result-list{margin-top:11px;display:grid;gap:7px}.result-row{display:flex;align-items:start;justify-content:space-between;gap:8px;font-size:12px;border-bottom:1px solid #2a3c55;padding:5px 0}.result-row span:last-child{color:var(--accent);font-weight:800;white-space:nowrap}.result-row.miss span:last-child{color:var(--orange)}
+details.sess{border-top:0;margin:0;padding:0;border-bottom:1px solid #2d405c}details.sess summary{list-style:none;padding:12px 0;color:var(--text);font-size:15px}details.sess summary::-webkit-details-marker{display:none}details.sess summary strong{display:block}details.sess summary span{font-size:12px;color:var(--muted);font-weight:500}details.sess .result-list{margin:0 0 12px}
+.progress-select{width:100%;border:1px solid #425771;border-radius:10px;background:#0a1729;color:var(--text);padding:11px 9px;font-weight:750;margin:6px 0 10px}
+.notice{background:#1b2c45;border:1px solid #3a5675;border-radius:14px;padding:13px 14px;margin:12px 0;font-size:13px;color:#d4e3f5}.notice b{color:var(--text)}.notice .actions{margin-top:9px}
+.banner{position:fixed;left:50%;transform:translateX(-50%);top:calc(10px + env(safe-area-inset-top));z-index:60;background:#16483f;border:1px solid var(--accent);color:#d8fff2;border-radius:14px;padding:10px 12px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.4);width:max-content;max-width:calc(100% - 24px)}.banner button{padding:8px 12px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:70;background:#24354d;border:1px solid #3a5675;color:var(--text);padding:10px 14px;border-radius:12px;font-size:13px;font-weight:700;transition:.2s;max-width:calc(100% - 30px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}body.has-rest .toast{bottom:calc(190px + env(safe-area-inset-bottom))}body.has-rest.rest-mini .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
+/* ---------- rest timer dock ---------- */
+.rest-dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(10,17,31,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid #2f4d6b;box-shadow:0 -12px 34px rgba(0,0,0,.5);padding:12px 14px calc(12px + env(safe-area-inset-bottom))}
+.rest-inner{max-width:940px;margin:auto;display:flex;gap:16px;align-items:center;position:relative}
+.rest-ring-wrap{position:relative;width:146px;height:146px;flex:0 0 auto;border:0;background:none;padding:0;color:inherit}
+.rest-ring{width:100%;height:100%;transform:rotate(-90deg);display:block}.rest-ring circle{fill:none;stroke-width:9}.ring-bg{stroke:#1c3049}.ring-fg{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:326.73;stroke-dashoffset:0;transition:stroke-dashoffset .25s linear,stroke .3s}
+.rest-time{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}.rest-time b{font-size:38px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}.rest-time span{font-size:11px;font-weight:850;letter-spacing:.14em;color:var(--muted);margin-top:5px}
+.rest-body{flex:1;min-width:0}.rest-label{font-weight:850;font-size:15px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:40px}.rest-next{font-size:12px;color:var(--muted);margin:3px 0 10px}
+.rest-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}.rest-btns button{padding:12px 8px;font-size:15px}
+.rest-collapse{position:absolute;top:-4px;right:0;width:38px;height:34px;border-radius:10px;border:1px solid #36506c;background:#152238;color:var(--muted);font-size:16px;padding:0}
+.rest-dock.warn .ring-fg{stroke:var(--orange)}.rest-dock.warn .rest-time b{color:var(--orange)}
+.rest-dock.paused .ring-fg{stroke:#6f86a6}.rest-dock.paused .rest-time b{color:#9caec8}
+.rest-dock.finished .ring-fg{stroke:var(--accent)}.rest-dock.finished .rest-time b{color:var(--accent);font-size:32px}.rest-dock.finished .rest-ring-wrap{animation:pulse 1s ease-in-out infinite}.rest-dock.finished [data-live]{display:none}.rest-dock.finished .rest-btns{grid-template-columns:1fr}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.rest-dock.mini{padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}.rest-dock.mini .rest-ring-wrap{width:62px;height:62px}.rest-dock.mini .rest-time b{font-size:16px}.rest-dock.mini .rest-time span{display:none}.rest-dock.mini .rest-next,.rest-dock.mini #restMinus,.rest-dock.mini #restPlus{display:none}.rest-dock.mini .rest-label{font-size:13px;margin-bottom:6px}.rest-dock.mini .rest-btns button{padding:9px 6px;font-size:14px}.rest-dock.mini .rest-body{padding-right:46px}.rest-dock.mini .rest-label{padding-right:0}.rest-dock.mini .rest-collapse{top:50%;transform:translateY(-50%) rotate(180deg);height:44px}.rest-dock.mini .ring-bg,.rest-dock.mini .ring-fg{stroke-width:11}
+body.has-rest .wrap{padding-bottom:calc(230px + env(safe-area-inset-bottom))}body.has-rest.rest-mini .wrap{padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+/* ---------- settings sheet ---------- */
+.sheet{position:fixed;inset:0;z-index:55;background:rgba(3,6,12,.72);overflow-y:auto;-webkit-overflow-scrolling:touch}.sheet-card{width:min(680px,100%);margin:0 auto;min-height:100%;background:var(--bg);border-left:1px solid #22344d;border-right:1px solid #22344d;padding:calc(18px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom))}.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;background:var(--bg);padding:6px 0 10px;z-index:2}.sheet-head h2{margin:0;font-size:24px;letter-spacing:-.03em}.sheet h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:22px 0 4px}
+.toggle{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid #22344d;cursor:pointer}.toggle b{display:block;font-size:15px}.toggle small{display:block;font-size:12px;color:var(--muted);line-height:1.35;margin-top:2px}.toggle input{position:absolute;opacity:0;width:1px;height:1px}.toggle i{flex:0 0 auto;width:52px;height:30px;border-radius:999px;background:#2a3c58;position:relative;transition:.2s}.toggle i::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#cfdeed;transition:.2s}.toggle input:checked+i{background:var(--accent)}.toggle input:checked+i::after{left:25px;background:#073026}.toggle input:focus-visible+i{outline:2px solid #a0d1ff;outline-offset:2px}
+.rest-editor{display:grid;gap:4px}.rest-editor .day{font-weight:850;margin:12px 0 2px;font-size:14px}.rest-editor .row{display:grid;grid-template-columns:1fr 92px;align-items:center;gap:10px;font-size:13px;padding:4px 0;border-bottom:1px solid #1c2c43}.rest-editor input{width:100%;border:1px solid #425771;border-radius:9px;background:#0a1729;color:var(--text);padding:8px;font-weight:800;text-align:center}
+.status-list{font-size:13px;color:#cfdeed;display:grid;gap:5px;margin-top:8px}.status-list .ok{color:var(--accent)}.status-list .bad{color:var(--orange)}
+.limits{margin-top:14px}.limits ul{margin:6px 0 0;padding-left:18px;font-size:12px;color:var(--muted)}.limits li{margin:4px 0}
+#loading{padding:60px 0;text-align:center;color:var(--muted)}
+.hide{display:none!important}
+@media(max-width:540px){.wrap{padding:calc(16px + env(safe-area-inset-top)) 12px 80px}.logo{display:none}.metrics{gap:6px}.metric{padding:10px 8px}.metric b{font-size:21px}.hero{padding:17px}.inputrow{grid-template-columns:1fr;gap:10px}.inputrow>div:first-child{max-width:170px}.sets{gap:6px}.set input{padding:10px 2px;font-size:17px}.ex-head{padding:13px}.ex-content{padding:0 13px 14px}.ex-title{font-size:15px}.timer-strip{margin:0 -12px;padding:calc(9px + env(safe-area-inset-top)) 12px 9px}.timer-strip b{font-size:22px}.timer-strip .primary{padding:10px}.primary{padding:12px}details .settings{grid-template-columns:1fr 1fr}.rest-ring-wrap{width:128px;height:128px}.rest-time b{font-size:34px}.rest-inner{gap:12px}.rest-btns{gap:7px}.rest-btns button{padding:12px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div><div class="eyebrow">VOLT · LOOKMAX</div><h1>Workout Tracker</h1><p class="sub">95 weekly sets · total-rep progression · workout &amp; rest timers</p></div><div class="top-actions"><button type="button" id="installBtn" class="iconbtn install hide">Install</button><button type="button" id="settingsBtn" class="iconbtn" aria-label="Settings">⚙︎</button><div class="logo">VOLT</div></div></header>
+<div id="updateBanner" class="banner hide" role="status"><span>New version installed.</span><button type="button" class="primary" id="reloadBtn">Reload</button><button type="button" class="secondary" id="laterBtn">Later</button></div>
+<div id="activeBar" class="timer-strip hide" aria-live="off"><div><span>WORKOUT ELAPSED</span><b id="liveTimer">00:00:00</b></div><div class="actions"><button id="finishTop" class="primary">Finish Workout ✓</button></div></div>
+<div id="loading">Loading your workouts…</div>
+<div id="home" class="hide"></div>
+<div id="sessionView" class="hide"><div id="sessionTitle" class="session-top"></div><main id="workoutExercises"></main><div class="actions" style="margin-top:20px"><button id="finishBottom" class="primary full">Finish Workout &amp; Save</button><button id="discardBtn" class="secondary danger full">Discard Active Workout</button></div><p class="small-note">Entries, the workout timer and the rest timer are saved automatically. Times are calculated from timestamps, so they stay correct if you lock your phone, switch apps or close the app.</p></div>
+<section id="completedView" class="hide"></section>
+<section class="foot" id="historySection"><h2 class="section-title">Workout history</h2><div id="sessionHistory"></div>
+<h2 class="section-title">Exercise progress</h2><select id="progressSelect" class="progress-select" aria-label="Choose exercise"></select><div id="exerciseProgress"></div>
+<h2 class="section-title">Backups</h2><div class="actions"><button class="secondary" id="exportBackup">Export backup (.json)</button><button class="secondary" id="importBackup">Import backup</button><button class="secondary" id="exportCsv">Export history (.csv)</button><input type="file" id="backupFile" accept="application/json,.json" hidden></div><p id="backupNote"></p><p>Your data is stored only on this phone, inside this app (IndexedDB with a second copy in local storage). <b>Clearing Chrome's site data, clearing storage for this site, or uninstalling the app can delete your records.</b> Export a backup regularly and keep the file somewhere safe (Google Drive, email to yourself).</p><div id="saveWarning" class="inline-note"></div></section>
+</div>
+
+<div id="restDock" class="rest-dock hide" role="region" aria-label="Rest timer">
+ <div class="rest-inner">
+  <button type="button" class="rest-ring-wrap" id="restRingWrap" aria-label="Rest timer">
+   <svg viewBox="0 0 120 120" class="rest-ring" aria-hidden="true"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"/></svg>
+   <span class="rest-time"><b id="restTime" aria-live="off">0:00</b><span id="restStateLabel">REST</span></span>
+  </button>
+  <div class="rest-body">
+   <div class="rest-label" id="restLabel">Rest</div>
+   <div class="rest-next" id="restNext"></div>
+   <div class="rest-btns">
+    <button type="button" id="restMinus" class="secondary" data-live>−15s</button>
+    <button type="button" id="restPlus" class="secondary" data-live>+15s</button>
+    <button type="button" id="restPause" class="secondary" data-live>Pause</button>
+    <button type="button" id="restSkip" class="primary">Skip Rest</button>
+   </div>
+  </div>
+  <button type="button" class="rest-collapse" id="restCollapse" aria-label="Minimize rest timer">▾</button>
+ </div>
+</div>
+
+<div id="settingsSheet" class="sheet hide" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+ <div class="sheet-card">
+  <div class="sheet-head"><h2 id="settingsTitle">Settings</h2><button type="button" id="closeSettings" class="primary">Done</button></div>
+  <h3>Rest timer</h3>
+  <label class="toggle"><span><b>Auto-start rest timer</b><small>Starts only when you tap ✓ on a set — never just from typing reps.</small></span><input type="checkbox" data-pref="autoRest"><i></i></label>
+  <label class="toggle"><span><b>Sound</b><small>Chime when rest ends. Uses your phone's media volume.</small></span><input type="checkbox" data-pref="sound"><i></i></label>
+  <label class="toggle"><span><b>Vibration</b><small id="vibrateNote">Vibrate when rest ends.</small></span><input type="checkbox" data-pref="vibrate"><i></i></label>
+  <label class="toggle"><span><b>Notifications</b><small id="notifyNote">Show a notification when rest ends while the app is in the background.</small></span><input type="checkbox" data-pref="notify"><i></i></label>
+  <label class="toggle"><span><b>Keep screen on during workouts</b><small>Most reliable way to get rest alerts on time. Uses more battery.</small></span><input type="checkbox" data-pref="wakeLock"><i></i></label>
+  <div class="actions" style="margin-top:12px"><button type="button" class="secondary" id="testAlert">Test sound + vibration</button><button type="button" class="secondary" id="testNotify">Test notification (10 s)</button></div>
+  <div class="panel limits"><strong>What Android allows (please read)</strong><ul>
+   <li>The countdown itself is always correct: it's based on the end time, so locking the phone or switching apps never makes it drift.</li>
+   <li>With the app <b>open on screen</b>, the sound, vibration and on-screen alert are reliable.</li>
+   <li>With the phone <b>locked or the app in the background</b>, Android and Chrome may pause web apps to save battery. The background notification and chime are a best effort — they may arrive late or not at all. Vibration from the page itself only works while the app is on screen (the notification can still vibrate).</li>
+   <li>Samsung battery settings can make this worse. For best results: Settings → Apps → Chrome → Battery → <i>Unrestricted</i>, and allow Chrome notifications.</li>
+   <li>Rests longer than about 5 minutes are less likely to notify in the background.</li>
+   <li>If you reopen the app after the rest ended, it shows "Rest finished" instead of beeping late.</li>
+  </ul></div>
+  <h3>Rest time per exercise</h3>
+  <p class="small-note">Seconds of rest after each completed set. Saved per workout day, so the same exercise can have different rest on different days. You can also change these inside each exercise during a workout.</p>
+  <div id="restEditor" class="rest-editor"></div>
+  <div class="actions" style="margin-top:12px"><button type="button" class="secondary danger" id="resetRest">Reset all rest times to routine defaults</button></div>
+  <h3>Data &amp; storage</h3>
+  <div id="storageStatus" class="status-list"></div>
+  <p class="small-note" style="margin-top:16px">VOLT Workout Tracker <span id="appVersion"></span></p>
+ </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+const APP_VERSION='3.0.0';
+// [id, name, work sets, total-rep goal, weight increment (lb), rest seconds]
+const days=[
+ {id:'mon',name:'Monday',title:'Pull A',ex:[
+ ['lat-machine','Lat Pulldown (Machine · Nautilus)',3,30,5,150],
+ ['tbar','Chest Supported T-Bar Row',3,30,5,150],
+ ['iso-row','Iso-Lateral Row (Machine)',2,20,5,120],
+ ['pullover','Pullover (Machine)',2,26,5,120],
+ ['rear-fly','Rear Delt Reverse Fly (Machine)',3,40,5,90],
+ ['bicep','Bicep Curl (Machine)',3,36,5,90],
+ ['reverse','Reverse Curl (Cable)',2,26,2.5,90]]},
+ {id:'tue',name:'Tuesday',title:'Legs + Side Delts',ex:[
+ ['lateral','Lateral Raise (Machine)',5,65,5,90],
+ ['hack','Hack Squat (Machine)',3,30,5,180],
+ ['hyper','Back Extension (Weighted Hyperextension)',3,36,5,120],
+ ['leg-curl','Seated Leg Curl (Machine)',3,36,5,120],
+ ['leg-ext','Leg Extension (Machine)',3,36,5,90]]},
+ {id:'thu',name:'Thursday',title:'Push A + Calves / Core',ex:[
+ ['incline','Incline Chest Press (Machine)',4,40,5,150],
+ ['chest','Chest Press (Machine)',2,20,5,150],
+ ['pec','Butterfly (Pec Deck)',2,26,5,90],
+ ['triceps','Overhead Triceps Extension (Cable)',4,50,2.5,90],
+ ['calves','Standing Calf Raise (Machine)',3,40,5,90],
+ ['crunch','Cable Crunch',2,26,5,90]]},
+ {id:'fri',name:'Friday',title:'Pull B + Side Delts / Back',ex:[
+ ['lateral','Lateral Raise (Machine)',4,52,5,90],
+ ['lat-cable','Lat Pulldown (Cable)',3,30,5,150],
+ ['seated-row','Seated Row (Machine)',3,30,5,150],
+ ['high-row','Iso-Lateral High Row (Machine)',2,20,5,120],
+ ['pullover','Pullover (Machine)',2,26,5,120],
+ ['rear-fly','Rear Delt Reverse Fly (Machine)',3,40,5,90],
+ ['bicep','Bicep Curl (Machine)',3,36,5,90],
+ ['reverse','Reverse Curl (Cable)',2,26,2.5,90]]},
+ {id:'sun',name:'Sunday',title:'Push B + Side Delts / Calves / Core',ex:[
+ ['lateral','Lateral Raise (Machine)',4,52,5,90],
+ ['incline','Incline Chest Press (Machine)',4,40,5,150],
+ ['chest','Chest Press (Machine)',2,20,5,150],
+ ['shoulder-press','Seated Shoulder Press (Machine)',2,20,5,120],
+ ['triceps','Overhead Triceps Extension (Cable)',4,50,2.5,90],
+ ['calves','Standing Calf Raise (Machine)',3,40,5,90],
+ ['crunch','Cable Crunch',2,26,5,90]]}
+];
+
+/* ================= storage ================= */
+const LEGACY_KEY='volt-total-rep-2026-v1'; // key used by the original HTML tracker (v1/v2)
+const LS_KEY='volt-pwa-state-v3';
+const DB_NAME='volt-tracker',STORE='kv';
+const defaultPrefs=()=>({autoRest:true,sound:true,vibrate:true,notify:false,wakeLock:false,lastExportAt:null});
+const emptyData=()=>({schema:3,history:[],settings:{},drafts:{},sessions:[],activeSession:null,prefs:defaultPrefs(),savedAt:0});
+let data=emptyData(),idbOK=true,lsOK=true,persistGranted=null,migratedFromLegacy=false,loaded=false;
+let dbPromise=null,pendingJSON=null,idbTimer=null;
+function openDB(){if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{if(!('indexedDB' in window))return reject(new Error('IndexedDB unavailable'));const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>req.result.createObjectStore(STORE);req.onsuccess=()=>{const db=req.result;db.onversionchange=()=>db.close();resolve(db)};req.onerror=()=>reject(req.error);req.onblocked=()=>reject(new Error('IndexedDB blocked'))});dbPromise.catch(()=>{dbPromise=null});return dbPromise}
+async function idbGet(key){const db=await openDB();return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readonly').objectStore(STORE).get(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function idbSet(key,value){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(value,key);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}
+function persist(){if(!loaded)return;data.savedAt=Date.now();const json=JSON.stringify(data);
+ try{localStorage.setItem(LS_KEY,json);lsOK=true}catch(e){lsOK=false}
+ pendingJSON=json;clearTimeout(idbTimer);idbTimer=setTimeout(flushIDB,200);warning()}
+function flushIDB(){clearTimeout(idbTimer);if(pendingJSON==null)return Promise.resolve();const json=pendingJSON;pendingJSON=null;
+ return idbSet('state',json).then(()=>{idbOK=true;warning()}).catch(()=>{idbOK=false;warning()})}
+const parseMaybe=s=>{try{const o=typeof s==='string'?JSON.parse(s):s;return o&&typeof o==='object'&&!Array.isArray(o)?o:null}catch(e){return null}};
+function normalize(raw){
+ const d={...emptyData(),...(raw||{})};
+ if(!Array.isArray(d.history))d.history=[];
+ d.history=d.history.filter(h=>h&&typeof h==='object'&&h.movement&&Number.isFinite(Number(h.timestamp)));
+ if(!Array.isArray(d.sessions))d.sessions=[];
+ d.sessions=d.sessions.filter(s=>s&&typeof s==='object');
+ if(!d.settings||typeof d.settings!=='object'||Array.isArray(d.settings))d.settings={};
+ if(!d.drafts||typeof d.drafts!=='object'||Array.isArray(d.drafts))d.drafts={};
+ d.prefs={...defaultPrefs(),...(d.prefs&&typeof d.prefs==='object'?d.prefs:{})};
+ const a=d.activeSession;
+ if(a&&(typeof a!=='object'||!dayById(a.dayId)||!Number.isFinite(a.startedAt)))d.activeSession=null;
+ if(d.activeSession){const day=dayById(a.dayId);if(!a.entries||typeof a.entries!=='object')a.entries={};
+  for(const e of day.ex){const s=slotId(day,e),r=a.entries[s]||{weight:'',reps:[],weightEdited:false};
+   r.reps=Array.from({length:e[2]},(_,i)=>r.reps?.[i]??'');r.done=Array.from({length:e[2]},(_,i)=>!!r.done?.[i]);if(r.weight==null)r.weight='';a.entries[s]=r}
+  if(a.rest&&!(typeof a.rest==='object'&&Number.isFinite(a.rest.totalMs)))a.rest=null;
+  if(a.rest===undefined)a.rest=null}
+ d.schema=3;return d}
+async function loadData(){
+ let idbRaw=null,lsRaw=null,legacyRaw=null;
+ try{idbRaw=await idbGet('state')}catch(e){idbOK=false}
+ try{lsRaw=localStorage.getItem(LS_KEY);legacyRaw=localStorage.getItem(LEGACY_KEY)}catch(e){lsOK=false}
+ const a=parseMaybe(idbRaw),b=parseMaybe(lsRaw);let chosen;
+ if(a&&b)chosen=(Number(b.savedAt)||0)>(Number(a.savedAt)||0)?b:a;else chosen=a||b;
+ if(!chosen){const legacy=parseMaybe(legacyRaw);if(legacy){chosen=legacy;migratedFromLegacy=true}}
+ data=normalize(chosen);loaded=true;persist();await flushIDB();
+ if(navigator.storage?.persist){try{persistGranted=await navigator.storage.persisted();if(!persistGranted)persistGranted=await navigator.storage.persist()}catch(e){}}
+}
+function warning(){const el=$('saveWarning');if(!el)return;el.textContent=(!idbOK&&!lsOK)?'⚠ This browser is not letting the app save data. Export a backup right after your workout.':(!idbOK?'⚠ IndexedDB unavailable — using local storage only. Export backups regularly.':(!lsOK?'⚠ Backup copy in local storage failed (storage may be full). Main database still OK.':''))}
+window.addEventListener('pagehide',()=>{flushIDB()});
+
+/* ================= helpers ================= */
+const $=id=>document.getElementById(id);
+const fmt=n=>n==null||n===''?'—':Number(Number(n).toFixed(2)).toString();
+const round2=n=>Math.round(n*100)/100;
+const safe=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateStr=ms=>new Date(ms).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+const shortDate=ms=>new Date(ms).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'2-digit'});
+const duration=ms=>{let seconds=Math.max(0,Math.floor(ms/1000));const h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;return [h,m,s].map(n=>String(n).padStart(2,'0')).join(':')};
+const mmss=sec=>{sec=Math.max(0,Math.round(sec));return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')};
+const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(r,ms,null))]);
+const dayOfWeek={0:'sun',1:'mon',2:'tue',4:'thu',5:'fri'};
+const todayId=dayOfWeek[new Date().getDay()]||null;
+let selectedDay=todayId||'mon',latestResult=null;
+function dayById(id){return days.find(d=>d.id===id)}
+const slotId=(d,e)=>d.id+'::'+e[0];
+function settings(d,e){const c=data.settings[slotId(d,e)]||{};const rest=Number(c.rest??e[5]);return {goal:Number(c.goal??e[3]),increment:Number(c.increment??e[4]),rest:Number.isFinite(rest)&&rest>0?rest:e[5]}}
+function historyLatest(movement){let r=null;for(const h of data.history){if(h.movement===movement&&(!r||h.timestamp>r.timestamp))r=h}return r}
+function nextWeight(movement,inc){const h=historyLatest(movement);if(!h)return null;const step=Number.isFinite(inc)&&inc>0?inc:(Number(h.increment)||5);return round2(Number(h.weight)+(h.hit?step:0))}
+function dayNameOfSlot(slot){return dayById(String(slot||'').split('::')[0])?.name||''}
+let toastTimer=null;function toast(msg,ms=2600){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),ms)}
+window.__voltTest={chimes:0,vibrations:0,pageNotifications:0,swSchedules:0};
+
+/* ================= rendering ================= */
+function currentSession(){return data.activeSession}
+function render(){warning();const a=currentSession();$('loading').classList.add('hide');$('home').classList.toggle('hide',!!a||!!latestResult);$('sessionView').classList.toggle('hide',!a);$('activeBar').classList.toggle('hide',!a);$('completedView').classList.toggle('hide',!!a||!latestResult);
+ if(a){renderActive();updateTimer()}else{renderHome();if(latestResult)renderCompleted();else $('completedView').innerHTML=''}
+ renderHistory();renderProgress();renderBackupNote();renderRest();syncWakeLock()}
+function renderHome(){
+ const recent=data.sessions.slice().sort((a,b)=>b.endedAt-a.endedAt)[0];
+ const d=dayById(selectedDay),sets=d.ex.reduce((sum,e)=>sum+e[2],0);
+ const empty=!data.history.length&&!data.sessions.length;
+ $('home').innerHTML=`${migratedFromLegacy?'<div class="notice"><b>Old tracker data found and moved.</b> Your history from the previous VOLT tracker was copied into the app database.</div>':''}${empty?`<div class="notice"><b>Coming from the old VOLT HTML file?</b> Open the old file, tap <i>Export backup (.json)</i>, then come back here and import it. Your old history does not move over by itself.<div class="actions"><button type="button" class="secondary" id="homeImport">Import backup</button></div></div>`:''}<section class="hero"><div class="eyeline"><span class="chip ${todayId?'positive':'warn'}">${todayId?'TODAY: '+safe(dayById(todayId).name.toUpperCase()):'REST DAY · CHOOSE A WORKOUT'}</span><span class="chip">${data.sessions.length} saved sessions</span></div><h2 class="hero-title">Ready for ${safe(d.name)}?</h2><p>Tap Start Workout to load every exercise and begin the timer. Enter weight and reps, then tap ✓ on each set to start your rest timer. The workout timer stops only when you finish.</p><div class="daynav" id="dayChooser">${days.map(day=>`<button type="button" data-pick="${day.id}" class="${day.id===selectedDay?'active':''}">${day.name}<span>${safe(day.title)}</span></button>`).join('')}</div><div class="eyeline" style="margin:13px 0"><span class="chip">${d.ex.length} exercises</span><span class="chip">${sets} work sets</span><span class="chip">No rep ranges</span></div><button class="primary full big-start" id="startBtn">▶ START ${safe(d.name.toUpperCase())} WORKOUT</button></section>
+ <div class="metrics"><div class="metric"><b>${data.sessions.length}</b><span>Workouts finished</span></div><div class="metric"><b>${data.history.length}</b><span>Exercise logs</span></div><div class="metric"><b>${recent?duration(recent.durationMs):'—'}</b><span>Latest workout time</span></div></div>
+ <div class="panel"><strong>${safe(d.name)} — ${safe(d.title)}</strong><div class="result-list">${d.ex.map(e=>{const c=settings(d,e),s=nextWeight(e[0],c.increment);return `<div class="result-row"><span>${safe(e[1])}<br><small class="small-note">${e[2]} sets · goal ${c.goal} total reps · rest ${mmss(c.rest)}</small></span><span>${s===null?'new':fmt(s)+' lb'}</span></div>`}).join('')}</div></div>
+ <div class="panel" style="margin-top:12px"><strong>How progression works</strong><p>Each exercise has one total-rep goal. Your set reps are added together. Meet the goal and the next workout suggests a heavier weight; miss it and the weight stays the same. No set-by-set rep targets.</p></div>`;
+ $('dayChooser').querySelectorAll('[data-pick]').forEach(btn=>btn.addEventListener('click',()=>{selectedDay=btn.dataset.pick;renderHome()}));
+ $('startBtn').addEventListener('click',startWorkout);
+ $('homeImport')?.addEventListener('click',()=>$('backupFile').click());
+}
+function startWorkout(){if(currentSession())return;unlockAudio();
+ const d=dayById(selectedDay),entries={};
+ for(const e of d.ex){const cfg=settings(d,e),suggested=nextWeight(e[0],cfg.increment),draft=data.drafts[slotId(d,e)];entries[slotId(d,e)]={weight:draft?.weight??(suggested===null?'':String(suggested)),reps:Array.from({length:e[2]},(_,i)=>draft?.reps?.[i]??''),done:Array.from({length:e[2]},()=>false),weightEdited:false}}
+ data.activeSession={dayId:d.id,startedAt:Date.now(),entries,rest:null};persist();latestResult=null;render();window.scrollTo({top:0,behavior:'instant'});
+}
+function renderActive(){
+ const a=currentSession(),d=dayById(a.dayId),count=d.ex.reduce((s,e)=>s+e[2],0);
+ $('sessionTitle').innerHTML=`<div class="eyeline"><span class="chip positive">● WORKOUT IN PROGRESS</span><span class="chip">${safe(d.name)} · ${count} sets</span></div><h2>${safe(d.name)} — ${safe(d.title)}</h2><p>Started ${dateStr(a.startedAt)} · tap ✓ after each set to start rest</p>`;
+ $('workoutExercises').innerHTML=d.ex.map((e,index)=>renderExerciseCard(d,e,index)).join('');
+ d.ex.forEach(e=>bindCard(d,e));
+}
+function lastText(e){const prev=historyLatest(e[0]);if(!prev)return 'First time logging this exercise';const day=dayNameOfSlot(prev.slot);return `Last${day?' ('+day+')':''}: ${fmt(prev.weight)} lb · ${(prev.reps||[]).join(' + ')} = ${prev.total} / goal ${prev.goal} ${prev.hit?'✓ goal met':'· goal missed'}`}
+function subText(e,cfg){return `${e[2]} work sets · goal ${cfg.goal} total reps · rest ${mmss(cfg.rest)}`}
+function renderExerciseCard(d,e,index){
+ const a=currentSession(),slot=slotId(d,e),cfg=settings(d,e),entry=a.entries[slot];const suggested=nextWeight(e[0],cfg.increment);
+ return `<article class="ex" data-ex="${safe(slot)}"><div class="ex-head"><div><div class="ex-title">${index+1}. ${safe(e[1])}</div><div class="ex-sub">${subText(e,cfg)}</div></div><div class="ex-side"><strong>${suggested===null?'Choose lb':fmt(suggested)+' lb'}</strong><span>${suggested===null?'Starting weight':'Suggested weight'}</span></div></div><div class="ex-content"><div class="lastnote">${safe(lastText(e))}</div><div class="inputrow"><div><label class="fieldlabel" for="wt-${safe(slot)}">Weight (lb)</label><input id="wt-${safe(slot)}" class="field-input" data-field="weight" type="number" min="0" step="any" inputmode="decimal" placeholder="lb" value="${safe(entry.weight??'')}"></div><div><span class="fieldlabel">Reps per set — tap ✓ when the set is done</span><div class="sets">${Array.from({length:e[2]},(_,i)=>`<div class="set${entry.done[i]?' done':''}" data-set="${i}"><label for="rep-${safe(slot)}-${i}">Set ${i+1}</label><input id="rep-${safe(slot)}-${i}" data-field="rep" data-index="${i}" type="number" min="0" step="1" inputmode="numeric" placeholder="—" value="${safe(entry.reps?.[i]??'')}"><button type="button" class="setcheck" data-check="${i}" aria-pressed="${entry.done[i]}" aria-label="Mark set ${i+1} complete and start rest">✓</button></div>`).join('')}</div></div></div><div class="progress"><div class="progress-top"><strong data-role="total">0 / ${cfg.goal}</strong><span data-role="ratio">0%</span></div><div class="track"><div class="fill" data-role="fill"></div></div><div class="progress-note" data-role="message">Enter your completed reps</div></div><details><summary>Edit total-rep goal / weight increment / rest time</summary><div class="settings"><div><label class="fieldlabel">Total-rep goal</label><input class="field-input" data-field="goal" type="number" min="1" step="1" inputmode="numeric" value="${cfg.goal}"></div><div><label class="fieldlabel">Increment (lb)</label><input class="field-input" data-field="increment" type="number" min="0.01" step="any" inputmode="decimal" value="${cfg.increment}"></div><div><label class="fieldlabel">Rest (seconds)</label><input class="field-input" data-field="rest" type="number" min="5" max="1800" step="5" inputmode="numeric" value="${cfg.rest}"></div></div></details></div></article>`;
+}
+function bindCard(d,e){
+ const slot=slotId(d,e),card=[...document.querySelectorAll('[data-ex]')].find(n=>n.dataset.ex===slot);
+ const weight=card.querySelector('[data-field="weight"]'),reps=[...card.querySelectorAll('[data-field="rep"]')];
+ const row=()=>data.activeSession.entries[slot];
+ const update=()=>{const r=row();r.weight=weight.value;r.reps=reps.map(i=>i.value);r.reps.forEach((v,i)=>{if(String(v).trim()==='')r.done[i]=false});persist();refreshCard(d,e,card)};
+ weight.addEventListener('input',()=>{row().weightEdited=true;update()});
+ reps.forEach(i=>i.addEventListener('input',update)); // typing never starts the rest timer
+ card.querySelectorAll('[data-check]').forEach(btn=>btn.addEventListener('click',()=>{
+  const i=Number(btn.dataset.check),r=row();
+  if(r.done[i]){r.done[i]=false;persist();refreshCard(d,e,card);return}
+  const v=reps[i].value.trim();
+  if(v===''||!Number.isInteger(Number(v))||Number(v)<0){const box=btn.parentElement;box.classList.remove('shake');void box.offsetWidth;box.classList.add('shake');reps[i].focus();toast(`Enter your reps for set ${i+1} first`);return}
+  r.reps=reps.map(x=>x.value);r.done[i]=true;persist();refreshCard(d,e,card);unlockAudio();
+  if(data.prefs.autoRest)startRest(slot,i);
+ }));
+ for(const field of ['goal','increment','rest']){
+  card.querySelector(`[data-field="${field}"]`).addEventListener('change',event=>{
+   const value=Number(event.target.value);
+   const bad=!Number.isFinite(value)||value<=0||(field==='goal'&&!Number.isInteger(value))||(field==='rest'&&(value<5||value>1800));
+   if(bad){toast(field==='rest'?'Rest must be between 5 and 1800 seconds':'Enter a valid positive '+field);event.target.value=settings(d,e)[field];return}
+   data.settings[slot]??={};data.settings[slot][field]=field==='rest'?Math.round(value):value;persist();refreshCard(d,e,card);
+   card.querySelector('.ex-sub').textContent=subText(e,settings(d,e));
+   if(field==='increment'){const s=nextWeight(e[0],value);card.querySelector('.ex-side strong').textContent=s===null?'Choose lb':fmt(s)+' lb'}
+   if(field==='rest')toast(`Rest for ${e[1]} saved: ${mmss(value)}`);
+  });
+ }
+ refreshCard(d,e,card);
+}
+function refreshCard(d,e,card){
+ const entry=data.activeSession.entries[slotId(d,e)],cfg=settings(d,e),filled=entry.reps.filter(r=>String(r).trim()!=='').length,total=entry.reps.reduce((sum,r)=>sum+(String(r).trim()===''?0:Number(r)||0),0),complete=filled===e[2]&&String(entry.weight).trim()!=='';
+ card.querySelector('[data-role="total"]').textContent=total+' / '+cfg.goal;
+ card.querySelector('[data-role="ratio"]').textContent=Math.floor(total/cfg.goal*100)+'%';
+ card.querySelector('[data-role="fill"]').style.width=Math.min(100,(total/cfg.goal)*100)+'%';
+ const msg=card.querySelector('[data-role="message"]');
+ msg.textContent=!complete?`${filled}/${e[2]} sets entered${String(entry.weight).trim()===''?' · weight required to save':''}`:total>=cfg.goal?'GOAL MET — increase weight next session':'Need '+(cfg.goal-total)+' more total reps to reach goal · keep this weight next time';
+ msg.className='progress-note'+(complete&&total>=cfg.goal?' good':'');
+ card.querySelectorAll('.set').forEach(box=>{const i=Number(box.dataset.set),on=!!entry.done[i];box.classList.toggle('done',on);box.querySelector('.setcheck').setAttribute('aria-pressed',String(on))});
+}
+function validateEntry(d,e){
+ const row=data.activeSession.entries[slotId(d,e)]||{weight:'',reps:[]},w=String(row.weight??'').trim(),rs=row.reps||[];
+ const hasReps=rs.some(v=>String(v??'').trim()!=='');
+ if(!hasReps)return {kind:row.weightEdited?'partial':'skip'};
+ const weight=Number(w),allReps=rs.length===e[2]&&rs.every(v=>String(v).trim()!==''&&Number.isInteger(Number(v))&&Number(v)>=0);
+ if(!w||!Number.isFinite(weight)||weight<=0||!allReps)return {kind:'partial'};
+ const reps=rs.map(Number),total=reps.reduce((s,n)=>s+n,0),cfg=settings(d,e);
+ return {kind:'done',weight,reps,total,goal:cfg.goal,increment:cfg.increment,hit:total>=cfg.goal};
+}
+function finishWorkout(){
+ const a=currentSession();if(!a)return;const day=dayById(a.dayId),completed=[],incomplete=[];
+ for(const e of day.ex){const row=validateEntry(day,e);if(row.kind==='done')completed.push({e,row});else if(row.kind==='partial')incomplete.push(e[1])}
+ if(incomplete.length){if(!confirm('These exercises have partial entries and will NOT be saved:\n\n'+incomplete.join('\n')+'\n\nFinish anyway? Cancel to complete your entries.'))return}
+ if(completed.length===0){if(!confirm('No complete exercises are entered. Finish workout without exercise logs?'))return}
+ const endedAt=Date.now(),elapsed=endedAt-a.startedAt,workoutId='w'+a.startedAt;
+ const saved=[];
+ for(const {e,row} of completed){const h={timestamp:endedAt,movement:e[0],slot:slotId(day,e),name:e[1],weight:row.weight,reps:row.reps,total:row.total,goal:row.goal,increment:row.increment,hit:row.hit,workoutId};data.history.push(h);saved.push(h);delete data.drafts[slotId(day,e)]}
+ const session={id:workoutId,dayId:day.id,title:day.title,startedAt:a.startedAt,endedAt,durationMs:elapsed,exerciseCount:saved.length,entries:saved.map(h=>({movement:h.movement,slot:h.slot,total:h.total,goal:h.goal,hit:h.hit,weight:h.weight}))};
+ cancelRestAlerts();data.sessions.push(session);data.activeSession=null;latestResult=session;persist();flushIDB();render();window.scrollTo({top:0,behavior:'instant'});
+}
+function discardWorkout(){if(!currentSession())return;if(!confirm('Discard this workout and its unsaved exercise entries? This cannot be undone.'))return;cancelRestAlerts();data.activeSession=null;persist();render()}
+function updateTimer(){const a=currentSession();if(a)$('liveTimer').textContent=duration(Date.now()-a.startedAt)}
+function renderCompleted(){const s=latestResult,day=dayById(s.dayId),met=s.entries.filter(e=>e.hit).length,logs=data.history.filter(h=>h.workoutId===s.id);
+ $('completedView').innerHTML=`<section class="hero"><span class="chip positive">✓ WORKOUT SAVED</span><h2 class="hero-title">${safe(day.name)} — Complete!</h2><div class="metrics"><div class="metric"><b>${duration(s.durationMs)}</b><span>Total workout time</span></div><div class="metric"><b>${s.exerciseCount}</b><span>Exercises logged</span></div><div class="metric"><b>${met}</b><span>Goals achieved</span></div></div>${logs.length?`<div class="result-list">${logs.map(h=>{const step=Number(h.increment)||0;return `<div class="result-row${h.hit?'':' miss'}"><span><b>${safe(h.name)}</b><br>${fmt(h.weight)} lb · ${h.reps.join(' + ')} = ${h.total} / ${h.goal}</span><span>${h.hit?'Next: '+fmt(round2(Number(h.weight)+step))+' lb ↑':'Next: '+fmt(h.weight)+' lb ='}</span></div>`}).join('')}</div>`:''}<p>Finished ${dateStr(s.endedAt)}. The next workout will use these progression suggestions.</p><button type="button" class="secondary" id="closeResults">Back to workouts</button></section>`;
+ $('closeResults').addEventListener('click',()=>{latestResult=null;render()});
+}
+function renderHistory(){
+ const recent=data.sessions.slice().sort((a,b)=>b.endedAt-a.endedAt).slice(0,12);
+ $('sessionHistory').innerHTML=recent.length?recent.map(s=>{const logs=data.history.filter(h=>h.workoutId===s.id);return `<details class="sess"><summary><strong>${safe(dayById(s.dayId)?.name||'Workout')} — ${duration(s.durationMs)}</strong><span>${dateStr(s.startedAt)} · ${s.exerciseCount} exercises logged · ${(s.entries||[]).filter(e=>e.hit).length} goals hit · tap for details</span></summary><div class="result-list">${logs.length?logs.map(h=>`<div class="result-row${h.hit?'':' miss'}"><span>${safe(h.name)}<br><small class="small-note">${fmt(h.weight)} lb · ${(h.reps||[]).join(' + ')}</small></span><span>${h.total}/${h.goal} ${h.hit?'✓':'✗'}</span></div>`).join(''):'<p class="small-note">No exercise details stored for this session.</p>'}</div></details>`}).join(''):'<p class="small-note">Your completed workouts and their durations will appear here.</p>';
+}
+function movementList(){const seen=new Map();for(const d of days)for(const e of d.ex)if(!seen.has(e[0]))seen.set(e[0],e[1]);for(const h of data.history)if(!seen.has(h.movement))seen.set(h.movement,h.name||h.movement);return [...seen]}
+function renderProgress(){const sel=$('progressSelect'),prev=sel.value;sel.innerHTML=movementList().map(([id,name])=>{const n=data.history.filter(h=>h.movement===id).length;return `<option value="${safe(id)}">${safe(name)} (${n})</option>`}).join('');if(prev)sel.value=prev;if(!sel.value&&sel.options.length)sel.selectedIndex=0;showProgress()}
+function showProgress(){const id=$('progressSelect').value,logs=data.history.filter(h=>h.movement===id).sort((a,b)=>b.timestamp-a.timestamp);
+ $('exerciseProgress').innerHTML=logs.length?`<div class="result-list">${logs.slice(0,40).map(h=>`<div class="result-row${h.hit?'':' miss'}"><span>${shortDate(h.timestamp)} · ${safe(dayNameOfSlot(h.slot))}<br><small class="small-note">${fmt(h.weight)} lb · ${(h.reps||[]).join(' + ')}</small></span><span>${h.total}/${h.goal} ${h.hit?'✓ ↑':'✗ ='}</span></div>`).join('')}</div>`:'<p class="small-note">No logs for this exercise yet.</p>'}
+function renderBackupNote(){const t=data.prefs.lastExportAt;$('backupNote').textContent=t?`Last backup exported ${dateStr(t)}.`:'You have not exported a backup from this app yet.'}
+
+/* ================= rest timer ================= */
+const DONE_SHOW_MS=8000,LATE_ALERT_MS=60000,RING_C=2*Math.PI*52;
+let restMini=false;
+function restState(){return data.activeSession?.rest||null}
+function restRemaining(r=restState(),now=Date.now()){if(!r)return 0;if(r.finishedAt)return 0;if(r.pausedRemaining!=null)return Math.max(0,r.pausedRemaining);return Math.max(0,r.endsAt-now)}
+function startRest(slot,setIndex){
+ const a=data.activeSession;if(!a)return;const d=dayById(a.dayId),e=d.ex.find(x=>slotId(d,x)===slot);if(!e)return;
+ const ms=Math.round(settings(d,e).rest)*1000,now=Date.now();
+ a.rest={id:now,slot,name:e[1],setIndex,setCount:e[2],totalMs:ms,endsAt:now+ms,pausedRemaining:null,finishedAt:null};
+ restMini=false;persist();closeRestNotifications();scheduleRestAlerts();renderRest();
+}
+function togglePauseRest(){const r=restState();if(!r||r.finishedAt)return;
+ if(r.pausedRemaining==null){r.pausedRemaining=Math.max(0,r.endsAt-Date.now());r.endsAt=null}else{r.endsAt=Date.now()+r.pausedRemaining;r.pausedRemaining=null}
+ persist();scheduleRestAlerts();renderRest()}
+function adjustRest(delta){const r=restState();if(!r||r.finishedAt)return;const rem=Math.max(0,restRemaining(r)+delta);
+ if(r.pausedRemaining!=null)r.pausedRemaining=rem;else r.endsAt=Date.now()+rem;
+ r.totalMs=Math.max(rem,r.totalMs+delta,1000);persist();
+ if(rem<=0&&r.pausedRemaining==null){completeRest()}else{scheduleRestAlerts();renderRest()}}
+function skipRest(){if(!restState()||!data.activeSession)return;data.activeSession.rest=null;persist();cancelRestAlerts();closeRestNotifications();renderRest()}
+function completeRest(){const r=restState();if(!r||r.finishedAt)return;const now=Date.now(),overdue=now-(r.endsAt??now);
+ r.finishedAt=now;r.late=overdue>LATE_ALERT_MS;persist();
+ if(document.visibilityState==='visible'){cancelSWRest();closeRestNotifications();if(!r.late)alertUser(r)}
+ else if(!r.late){alertUser(r);showRestNotificationFromPage(r)}
+ renderRest()}
+function restLoop(){const r=restState();if(!r)return;
+ if(!r.finishedAt&&r.pausedRemaining==null&&Date.now()>=r.endsAt){completeRest();return}
+ if(r.finishedAt&&Date.now()-r.finishedAt>DONE_SHOW_MS&&document.visibilityState==='visible'){data.activeSession.rest=null;persist();renderRest();return}
+ updateRestUI()}
+function nextSetText(r){if(r.setIndex+1<r.setCount)return `Next: ${r.name.replace(/\s*\(.*\)$/,'')} · set ${r.setIndex+2} of ${r.setCount}`;
+ const a=data.activeSession,d=a&&dayById(a.dayId);if(!d)return '';const idx=d.ex.findIndex(e=>slotId(d,e)===r.slot);const nx=d.ex[idx+1];return nx?`Next exercise: ${nx[1]}`:'That was the last exercise — finish when ready'}
+function renderRest(){const r=restState(),dock=$('restDock');const show=!!(r&&data.activeSession);
+ dock.classList.toggle('hide',!show);document.body.classList.toggle('has-rest',show);document.body.classList.toggle('rest-mini',show&&restMini);
+ if(!show)return;
+ dock.classList.toggle('mini',restMini);
+ $('restLabel').textContent=r.finishedAt?(r.late?`Rest finished while you were away`:`Rest over — ${r.name.replace(/\s*\(.*\)$/,'')}`):`${r.name.replace(/\s*\(.*\)$/,'')} · set ${r.setIndex+1}/${r.setCount} ✓`;
+ $('restNext').textContent=nextSetText(r);
+ $('restSkip').textContent=r.finishedAt?'Dismiss':'Skip Rest';
+ $('restCollapse').setAttribute('aria-label',restMini?'Expand rest timer':'Minimize rest timer');
+ updateRestUI()}
+function updateRestUI(){const r=restState();if(!r)return;const dock=$('restDock'),rem=restRemaining(r),paused=r.pausedRemaining!=null&&!r.finishedAt;
+ dock.classList.toggle('finished',!!r.finishedAt);dock.classList.toggle('paused',paused);dock.classList.toggle('warn',!r.finishedAt&&!paused&&rem<=10000);
+ $('restTime').textContent=r.finishedAt?'GO!':mmss(Math.ceil(rem/1000));
+ $('restStateLabel').textContent=r.finishedAt?'REST DONE':paused?'PAUSED':'REST';
+ $('restPause').textContent=paused?'Resume':'Pause';
+ const frac=r.finishedAt?1:Math.min(1,Math.max(0,rem/r.totalMs));
+ $('ringFg').style.strokeDashoffset=String(RING_C*(1-frac));
+ $('restRingWrap').setAttribute('aria-label',r.finishedAt?'Rest finished':`Rest time remaining ${mmss(Math.ceil(rem/1000))}${paused?', paused':''}`)}
+
+/* ---- alerts: sound / vibration / notification ---- */
+let actx=null,scheduledChime=null;
+function unlockAudio(){try{if(!actx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return;actx=new C()}if(actx.state==='suspended')actx.resume().catch(()=>{})}catch(e){}}
+function chimeAt(t){const parts=[];const notes=[[0,880,.16],[.22,880,.16],[.44,1320,.5]];
+ for(const [off,f,len] of notes){const o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t+off);g.gain.exponentialRampToValueAtTime(0.7,t+off+0.015);g.gain.exponentialRampToValueAtTime(0.0001,t+off+len);o.connect(g);g.connect(actx.destination);o.start(t+off);o.stop(t+off+len+0.05);parts.push({o,g})}
+ return parts}
+function cancelScheduledChime(){if(!scheduledChime)return;for(const {o,g} of scheduledChime.parts){try{g.disconnect()}catch(e){}try{o.stop(0)}catch(e){}}scheduledChime=null}
+function playChimeNow(){unlockAudio();if(!actx)return;chimeAt(actx.currentTime+0.05);window.__voltTest.chimes++}
+function vibrateNow(){if(navigator.vibrate){try{if(navigator.vibrate([400,150,400,150,700]))window.__voltTest.vibrations++}catch(e){}}}
+function alertUser(r){
+ if(data.prefs.sound){let played=false;
+  if(scheduledChime&&scheduledChime.restId===r.id&&actx&&actx.state==='running'&&actx.currentTime>=scheduledChime.at-0.15)played=true;
+  if(played){window.__voltTest.chimes++;scheduledChime=null}else{cancelScheduledChime();playChimeNow()}}
+ else cancelScheduledChime();
+ if(data.prefs.vibrate)vibrateNow()}
+function notifPermission(){return 'Notification' in window?Notification.permission:'unsupported'}
+function swRegistration(){if(!('serviceWorker' in navigator))return Promise.resolve(null);return withTimeout(navigator.serviceWorker.ready,2500).catch(()=>null)}
+function swPost(msg){if(!('serviceWorker' in navigator))return;const c=navigator.serviceWorker.controller;if(c){c.postMessage(msg);return}swRegistration().then(reg=>reg?.active?.postMessage(msg))}
+function cancelSWRest(){swPost({type:'rest-cancel'})}
+function restNotificationText(r){return {title:'Rest over — next set! ⚡',body:nextSetText(r)||r.name}}
+function scheduleRestAlerts(){cancelScheduledChime();cancelSWRest();const r=restState();if(!r||r.finishedAt||r.pausedRemaining!=null)return;
+ const rem=(r.endsAt-Date.now())/1000;
+ if(data.prefs.sound&&actx&&actx.state==='running'&&rem>0){const at=actx.currentTime+rem;scheduledChime={parts:chimeAt(at),at,restId:r.id}}
+ if(data.prefs.notify&&notifPermission()==='granted'){swPost({type:'rest-schedule',endsAt:r.endsAt,id:r.id,...restNotificationText(r)});window.__voltTest.swSchedules++}}
+function cancelRestAlerts(){cancelScheduledChime();cancelSWRest()}
+async function closeRestNotifications(){const reg=await swRegistration();try{(await reg?.getNotifications?.({tag:'volt-rest'})||[]).forEach(n=>n.close())}catch(e){}}
+async function showRestNotificationFromPage(r){if(!data.prefs.notify||notifPermission()!=='granted')return;const reg=await swRegistration();if(!reg)return;
+ try{const existing=await reg.getNotifications({tag:'volt-rest'});if(existing.length)return;const t=restNotificationText(r);await reg.showNotification(t.title,{body:t.body,tag:'volt-rest',icon:'icon-192.png',badge:'icon-192.png',vibrate:[400,150,400,150,700],data:{url:location.href}});window.__voltTest.pageNotifications++}catch(e){}}
+
+/* ---- screen wake lock ---- */
+let wakeLock=null;
+async function syncWakeLock(){const want=!!(data.prefs.wakeLock&&data.activeSession&&document.visibilityState==='visible');
+ if(want&&!wakeLock&&'wakeLock' in navigator){try{wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null})}catch(e){wakeLock=null}}
+ else if(!want&&wakeLock){try{await wakeLock.release()}catch(e){}wakeLock=null}}
+
+/* ================= settings sheet ================= */
+function openSettings(){renderSettings();$('settingsSheet').classList.remove('hide');document.body.style.overflow='hidden'}
+function closeSettings(){$('settingsSheet').classList.add('hide');document.body.style.overflow='';render()}
+function renderSettings(){
+ document.querySelectorAll('[data-pref]').forEach(inp=>{inp.checked=!!data.prefs[inp.dataset.pref]});
+ $('vibrateNote').textContent='vibrate' in navigator?'Vibrate when rest ends (while the app is on screen).':'Vibration is not supported in this browser.';
+ const p=notifPermission();
+ $('notifyNote').textContent=p==='unsupported'?'Notifications are not supported here. Install the app from Chrome to use them.':p==='denied'?'Blocked. To allow: Android Settings → Apps → Chrome (or VOLT) → Notifications → Allow, then turn this on again.':'Show a notification when rest ends while the app is in the background (best effort).';
+ $('restEditor').innerHTML=days.map(d=>`<div class="day">${safe(d.name)} — ${safe(d.title)}</div>`+d.ex.map(e=>`<div class="row"><span>${safe(e[1])}<br><small class="small-note">default ${mmss(e[5])}</small></span><input type="number" min="5" max="1800" step="5" inputmode="numeric" data-rest-slot="${safe(slotId(d,e))}" value="${settings(d,e).rest}" aria-label="Rest seconds for ${safe(e[1])} on ${safe(d.name)}"></div>`).join('')).join('');
+ $('restEditor').querySelectorAll('[data-rest-slot]').forEach(inp=>inp.addEventListener('change',()=>{const v=Number(inp.value),slot=inp.dataset.restSlot,[dayId,mid]=slot.split('::'),d=dayById(dayId),e=d.ex.find(x=>x[0]===mid);
+  if(!Number.isFinite(v)||v<5||v>1800){toast('Rest must be between 5 and 1800 seconds');inp.value=settings(d,e).rest;return}
+  data.settings[slot]??={};data.settings[slot].rest=Math.round(v);persist();toast(`${e[1]} (${d.name}): rest ${mmss(v)}`)}));
+ const sw='serviceWorker' in navigator&&navigator.serviceWorker.controller;
+ $('storageStatus').innerHTML=[
+  [idbOK,'Main database (IndexedDB): '+(idbOK?'working':'unavailable')],
+  [lsOK,'Backup copy (local storage): '+(lsOK?'working':'unavailable')],
+  [persistGranted===true,'Protected from automatic cleanup: '+(persistGranted===true?'yes':persistGranted===false?'not granted by Chrome (installing the app usually helps)':'unknown')],
+  [!!sw,'Offline mode: '+(sw?'ready':'not active yet — reload once while online')],
+  [!!data.prefs.lastExportAt,'Last backup: '+(data.prefs.lastExportAt?dateStr(data.prefs.lastExportAt):'never — export one soon')],
+  [true,`Stored: ${data.sessions.length} workouts, ${data.history.length} exercise logs`]
+ ].map(([ok,t])=>`<div class="${ok?'ok':'bad'}">${ok?'✓':'!'} ${safe(t)}</div>`).join('');
+ $('appVersion').textContent='v'+APP_VERSION;
+}
+document.querySelectorAll('[data-pref]').forEach(inp=>inp.addEventListener('change',async()=>{
+ const key=inp.dataset.pref;
+ if(key==='notify'&&inp.checked){
+  if(notifPermission()==='unsupported'){inp.checked=false;toast('Notifications are not supported in this browser');return}
+  let p=notifPermission();if(p==='default'){try{p=await Notification.requestPermission()}catch(e){p='denied'}}
+  if(p!=='granted'){inp.checked=false;data.prefs.notify=false;persist();renderSettings();toast('Notification permission was not granted');return}
+ }
+ data.prefs[key]=inp.checked;persist();
+ if(key==='sound'&&inp.checked)unlockAudio();
+ if(['sound','notify'].includes(key))scheduleRestAlerts();
+ if(key==='wakeLock')syncWakeLock();
+ renderSettings();
+}));
+$('testAlert').addEventListener('click',()=>{unlockAudio();if(data.prefs.sound)playChimeNow();else toast('Sound is turned off');if(data.prefs.vibrate)vibrateNow()});
+$('testNotify').addEventListener('click',async()=>{
+ let p=notifPermission();if(p==='unsupported'){toast('Notifications are not supported here');return}
+ if(p==='default'){try{p=await Notification.requestPermission()}catch(e){p='denied'}}
+ if(p!=='granted'){toast('Notification permission not granted');renderSettings();return}
+ const reg=await swRegistration();if(!reg){toast('Service worker not ready — reload the app once while online');return}
+ swPost({type:'rest-schedule',endsAt:Date.now()+10000,id:'test',title:'VOLT test notification',body:'Notifications are working. ⚡',force:true});
+ toast('Lock your phone now — test notification in 10 seconds',4000)});
+$('resetRest').addEventListener('click',()=>{if(!confirm('Reset every exercise rest time to the routine default?'))return;for(const k of Object.keys(data.settings))if(data.settings[k])delete data.settings[k].rest;persist();renderSettings();toast('Rest times reset')});
+$('settingsBtn').addEventListener('click',openSettings);$('closeSettings').addEventListener('click',closeSettings);
+$('settingsSheet').addEventListener('click',e=>{if(e.target===$('settingsSheet'))closeSettings()});
+
+/* ================= backups ================= */
+function download(content,filename,type){const file=new Blob([content],{type}),url=URL.createObjectURL(file),link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),4000)}
+$('exportBackup').addEventListener('click',()=>{data.prefs.lastExportAt=Date.now();persist();download(JSON.stringify({format:'VOLT_TOTAL_REP_V3',appVersion:APP_VERSION,exportedAt:new Date().toISOString(),...data},null,2),'VOLT_backup_'+new Date().toISOString().slice(0,10)+'.json','application/json');renderBackupNote();toast('Backup saved to your Downloads')});
+$('importBackup').addEventListener('click',()=>$('backupFile').click());
+$('backupFile').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{
+ const json=JSON.parse(await file.text());
+ if(!['VOLT_TOTAL_REP_V1','VOLT_TOTAL_REP_V2','VOLT_TOTAL_REP_V3'].includes(json.format)||!Array.isArray(json.history)||typeof json.settings!=='object')throw Error('This is not a VOLT backup file');
+ if(!confirm(`Replace the data in this app with this backup?\n\nBackup contains ${json.history.length} exercise logs and ${(json.sessions||[]).length} workouts.\nThis app currently has ${data.history.length} logs and ${data.sessions.length} workouts.\n\nA safety copy of the current data is kept inside the app.`))return;
+ try{await idbSet('beforeImport',JSON.stringify(data))}catch(e){}
+ const keepPrefs=data.prefs;const {format,exportedAt,appVersion,...rest}=json;
+ cancelRestAlerts();data=normalize({...rest,prefs:{...keepPrefs,...(json.prefs||{}),notify:keepPrefs.notify}});migratedFromLegacy=false;latestResult=null;persist();await flushIDB();render();toast('Backup imported ✓',3500);
+ }catch(e){alert('Import failed: '+e.message)}finally{event.target.value=''}});
+$('exportCsv').addEventListener('click',()=>{const rows=[['Date','Workout ID','Workout Day','Exercise','Weight lb','Set Reps','Total Reps','Goal','Hit Goal','Next Weight lb'],...data.history.slice().sort((a,b)=>a.timestamp-b.timestamp).map(h=>[new Date(h.timestamp).toISOString(),h.workoutId||'',h.slot?.split('::')[0]||'',h.name,h.weight,(h.reps||[]).join(' + '),h.total,h.goal,h.hit?'YES':'NO',h.hit?Number((Number(h.weight)+Number(h.increment||0)).toFixed(2)):h.weight])];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');download(csv,'VOLT_history_'+new Date().toISOString().slice(0,10)+'.csv','text/csv')});
+$('progressSelect').addEventListener('change',showProgress);
+
+/* ================= wiring ================= */
+$('finishTop').addEventListener('click',finishWorkout);$('finishBottom').addEventListener('click',finishWorkout);$('discardBtn').addEventListener('click',discardWorkout);
+$('restMinus').addEventListener('click',()=>adjustRest(-15000));$('restPlus').addEventListener('click',()=>adjustRest(15000));
+$('restPause').addEventListener('click',()=>{unlockAudio();togglePauseRest()});
+$('restSkip').addEventListener('click',skipRest);
+$('restCollapse').addEventListener('click',()=>{restMini=!restMini;renderRest()});
+$('restRingWrap').addEventListener('click',()=>{if(restMini){restMini=false;renderRest()}});
+setInterval(()=>{if(!loaded)return;updateTimer();restLoop()},250);
+function onVisible(){if(!loaded)return;updateTimer();if(document.visibilityState==='visible'){if(actx&&actx.state==='suspended')actx.resume().catch(()=>{});const r=restState();if(r&&!r.finishedAt)closeRestNotifications();}else flushIDB();restLoop();syncWakeLock()}
+document.addEventListener('visibilitychange',onVisible);window.addEventListener('focus',onVisible);window.addEventListener('pageshow',onVisible);
+
+/* ---- install + service worker ---- */
+let deferredInstall=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('installBtn').classList.remove('hide')});
+$('installBtn').addEventListener('click',async()=>{if(!deferredInstall)return;deferredInstall.prompt();try{await deferredInstall.userChoice}catch(e){}deferredInstall=null;$('installBtn').classList.add('hide')});
+window.addEventListener('appinstalled',()=>{$('installBtn').classList.add('hide');toast('VOLT installed — open it from your home screen')});
+if('serviceWorker' in navigator&&location.protocol!=='file:'){
+ const hadController=!!navigator.serviceWorker.controller;
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(hadController)$('updateBanner').classList.remove('hide')});
+ navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(reg=>{setInterval(()=>reg.update().catch(()=>{}),60*60*1000)}).catch(()=>{});
+}
+$('reloadBtn').addEventListener('click',async()=>{await flushIDB();location.reload()});
+$('laterBtn').addEventListener('click',()=>$('updateBanner').classList.add('hide'));
+
+loadData().catch(()=>{data=normalize(null);loaded=true}).then(()=>{
+ render();
+ const a=data.activeSession;
+ if(a){toast(`Resumed your ${dayById(a.dayId).name} workout`);restLoop();scheduleRestAlerts()}
+});
+</script>
+</body>
+</html>
