@@ -2,7 +2,7 @@
  * Change VERSION whenever you upload new app files. Your workout data is NOT
  * stored in this cache, so changing it never deletes history.
  */
-const VERSION = 'volt-v3.0.0';
+const VERSION = 'volt-v3.2.0';
 const CACHE = VERSION;
 const ASSETS = [
   './',

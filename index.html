@@ -52,17 +52,29 @@ body.has-rest .wrap{padding-bottom:calc(230px + env(safe-area-inset-bottom))}bod
 /* ---------- settings sheet ---------- */
 .sheet{position:fixed;inset:0;z-index:55;background:rgba(3,6,12,.72);overflow-y:auto;-webkit-overflow-scrolling:touch}.sheet-card{width:min(680px,100%);margin:0 auto;min-height:100%;background:var(--bg);border-left:1px solid #22344d;border-right:1px solid #22344d;padding:calc(18px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom))}.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;background:var(--bg);padding:6px 0 10px;z-index:2}.sheet-head h2{margin:0;font-size:24px;letter-spacing:-.03em}.sheet h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:22px 0 4px}
 .toggle{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid #22344d;cursor:pointer}.toggle b{display:block;font-size:15px}.toggle small{display:block;font-size:12px;color:var(--muted);line-height:1.35;margin-top:2px}.toggle input{position:absolute;opacity:0;width:1px;height:1px}.toggle i{flex:0 0 auto;width:52px;height:30px;border-radius:999px;background:#2a3c58;position:relative;transition:.2s}.toggle i::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#cfdeed;transition:.2s}.toggle input:checked+i{background:var(--accent)}.toggle input:checked+i::after{left:25px;background:#073026}.toggle input:focus-visible+i{outline:2px solid #a0d1ff;outline-offset:2px}
-.rest-editor{display:grid;gap:4px}.rest-editor .day{font-weight:850;margin:12px 0 2px;font-size:14px}.rest-editor .row{display:grid;grid-template-columns:1fr 92px;align-items:center;gap:10px;font-size:13px;padding:4px 0;border-bottom:1px solid #1c2c43}.rest-editor input{width:100%;border:1px solid #425771;border-radius:9px;background:#0a1729;color:var(--text);padding:8px;font-weight:800;text-align:center}
+.vol-row{padding:13px 0;border-bottom:1px solid #22344d}.vol-top{display:flex;justify-content:space-between;align-items:baseline}.vol-top span{color:var(--accent);font-weight:850;font-variant-numeric:tabular-nums}.vol-row small{display:block;font-size:12px;color:var(--muted);margin-top:4px}.vol-row input[type=range]{width:100%;margin:10px 0 2px;accent-color:var(--accent);height:30px}.delrow{margin:2px 0 12px}.rest-editor{display:grid;gap:4px}.rest-editor .day{font-weight:850;margin:12px 0 2px;font-size:14px}.rest-editor .row{display:grid;grid-template-columns:1fr 92px;align-items:center;gap:10px;font-size:13px;padding:4px 0;border-bottom:1px solid #1c2c43}.rest-editor input{width:100%;border:1px solid #425771;border-radius:9px;background:#0a1729;color:var(--text);padding:8px;font-weight:800;text-align:center}
 .status-list{font-size:13px;color:#cfdeed;display:grid;gap:5px;margin-top:8px}.status-list .ok{color:var(--accent)}.status-list .bad{color:var(--orange)}
 .limits{margin-top:14px}.limits ul{margin:6px 0 0;padding-left:18px;font-size:12px;color:var(--muted)}.limits li{margin:4px 0}
 #loading{padding:60px 0;text-align:center;color:var(--muted)}
 .hide{display:none!important}
 @media(max-width:540px){.wrap{padding:calc(16px + env(safe-area-inset-top)) 12px 80px}.logo{display:none}.metrics{gap:6px}.metric{padding:10px 8px}.metric b{font-size:21px}.hero{padding:17px}.inputrow{grid-template-columns:1fr;gap:10px}.inputrow>div:first-child{max-width:170px}.sets{gap:6px}.set input{padding:10px 2px;font-size:17px}.ex-head{padding:13px}.ex-content{padding:0 13px 14px}.ex-title{font-size:15px}.timer-strip{margin:0 -12px;padding:calc(9px + env(safe-area-inset-top)) 12px 9px}.timer-strip b{font-size:22px}.timer-strip .primary{padding:10px}.primary{padding:12px}details .settings{grid-template-columns:1fr 1fr}.rest-ring-wrap{width:128px;height:128px}.rest-time b{font-size:34px}.rest-inner{gap:12px}.rest-btns{gap:7px}.rest-btns button{padding:12px 4px}}
+.sheet-top{z-index:56}.sheet-picker{z-index:58}
+.txt{width:100%;min-width:0;border:1px solid #425771;border-radius:10px;background:#0a1729;color:var(--text);padding:10px;font-weight:750;font-size:15px}.txt:focus{border-color:var(--accent);outline:none}.sel{width:auto;flex:0 0 auto;padding:9px 8px}
+.mini{min-width:40px;height:40px;border-radius:10px;border:1px solid #3a5675;background:#213550;color:#e5efff;font-weight:900;padding:0 8px;font-size:15px}.mini.danger{color:#ffb4bd;border-color:#74424f}
+.rday{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px;margin:12px 0}.rday-head{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.rday-title{font-size:17px;font-weight:850}.rbtns{display:flex;gap:6px}.rday-row2{display:flex;gap:10px;align-items:center;margin:9px 0;flex-wrap:wrap}.rtoggle{padding:10px}.warnTxt{color:var(--orange)}.okTxt{color:var(--accent)}
+.rex{border-top:1px solid #263a55;padding:11px 0 6px}.rex:first-child{margin-top:8px}.rex-move{display:flex;justify-content:flex-end;gap:6px;margin-top:7px}.rex-move .mini{height:34px;font-size:12.5px;font-weight:800;padding:0 10px}.rex-top{display:grid;grid-template-columns:22px 1fr auto;gap:6px;align-items:center}.rex-num{color:var(--muted);font-weight:900;text-align:center}
+.rex-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:6px;margin-top:8px}.rex-grid label{font-size:10.5px;color:var(--muted);font-weight:750;display:block;margin-bottom:3px}.rex-grid input{width:100%;min-width:0;border:1px solid #425771;border-radius:10px;background:#0a1729;color:var(--text);padding:8px 3px;font-weight:800;text-align:center;font-size:15px;height:40px}
+.stepper{display:grid;grid-template-columns:32px 1fr 32px;align-items:center;border:1px solid #425771;border-radius:10px;background:#0a1729;overflow:hidden;height:40px}.stepper button{height:100%;border:0;background:#1b2c45;color:var(--text);font-weight:900;font-size:18px;padding:0}.stepper b{text-align:center;font-size:16px}
+.linkbtn{display:block;width:100%;margin-top:9px;background:none;border:1px dashed #3a5675;color:#abcbf3;border-radius:10px;padding:9px 10px;font-weight:800;font-size:13px}
+.ex-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding-top:10px}.ex-tools button{padding:9px 3px;font-size:12.5px}
+.addex{margin-top:4px;border-style:dashed}
+.pick-new{display:grid;grid-template-columns:1fr auto;gap:8px}.pick-list{margin-top:8px}.pick-item{display:block;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:11px 12px;margin:7px 0}.pick-item b{display:block;font-size:15px}.pick-item span{font-size:12px;color:var(--muted)}.pick-item:disabled{opacity:.45}
+@media(max-width:540px){.ex-tools{grid-template-columns:1fr 1fr}.rex-grid{gap:5px}.rex-top .mini{min-width:36px;padding:0 6px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="top"><div><div class="eyebrow">VOLT · LOOKMAX</div><h1>Workout Tracker</h1><p class="sub">95 weekly sets · total-rep progression · workout &amp; rest timers</p></div><div class="top-actions"><button type="button" id="installBtn" class="iconbtn install hide">Install</button><button type="button" id="settingsBtn" class="iconbtn" aria-label="Settings">⚙︎</button><div class="logo">VOLT</div></div></header>
+<header class="top"><div><div class="eyebrow">VOLT · LOOKMAX</div><h1>Workout Tracker</h1><p class="sub" id="subline">total-rep progression · workout &amp; rest timers</p></div><div class="top-actions"><button type="button" id="installBtn" class="iconbtn install hide">Install</button><button type="button" id="settingsBtn" class="iconbtn" aria-label="Settings">⚙︎</button><div class="logo">VOLT</div></div></header>
 <div id="updateBanner" class="banner hide" role="status"><span>New version installed.</span><button type="button" class="primary" id="reloadBtn">Reload</button><button type="button" class="secondary" id="laterBtn">Later</button></div>
 <div id="activeBar" class="timer-strip hide" aria-live="off"><div><span>WORKOUT ELAPSED</span><b id="liveTimer">00:00:00</b></div><div class="actions"><button id="finishTop" class="primary">Finish Workout ✓</button></div></div>
 <div id="loading">Loading your workouts…</div>
@@ -97,9 +109,14 @@ body.has-rest .wrap{padding-bottom:calc(230px + env(safe-area-inset-bottom))}bod
 <div id="settingsSheet" class="sheet hide" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
  <div class="sheet-card">
   <div class="sheet-head"><h2 id="settingsTitle">Settings</h2><button type="button" id="closeSettings" class="primary">Done</button></div>
+  <h3>Routine</h3>
+  <p class="small-note">Rename workouts, change days, add/remove/reorder exercises, and change sets, rep goals, weight increments and rest times.</p>
+  <button type="button" class="secondary full" id="settingsRoutine">✎ Edit routine</button>
   <h3>Rest timer</h3>
   <label class="toggle"><span><b>Auto-start rest timer</b><small>Starts only when you tap ✓ on a set — never just from typing reps.</small></span><input type="checkbox" data-pref="autoRest"><i></i></label>
   <label class="toggle"><span><b>Sound</b><small>Chime when rest ends. Uses your phone's media volume.</small></span><input type="checkbox" data-pref="sound"><i></i></label>
+  <div class="vol-row"><div class="vol-top"><b>Rest chime volume</b><span id="volumeLabel">80%</span></div><input type="range" id="volumeSlider" min="0" max="100" step="5" value="80" aria-label="Rest chime volume"><small>Only changes VOLT's chime — your music and other apps aren't affected. 100% = as loud as your phone's media volume allows.</small></div>
+  <label class="toggle"><span><b>Sharp tone</b><small>Harsher beep that cuts through gym music.</small></span><input type="checkbox" data-pref="sharpTone"><i></i></label>
   <label class="toggle"><span><b>Vibration</b><small id="vibrateNote">Vibrate when rest ends.</small></span><input type="checkbox" data-pref="vibrate"><i></i></label>
   <label class="toggle"><span><b>Notifications</b><small id="notifyNote">Show a notification when rest ends while the app is in the background.</small></span><input type="checkbox" data-pref="notify"><i></i></label>
   <label class="toggle"><span><b>Keep screen on during workouts</b><small>Most reliable way to get rest alerts on time. Uses more battery.</small></span><input type="checkbox" data-pref="wakeLock"><i></i></label>
@@ -112,23 +129,43 @@ body.has-rest .wrap{padding-bottom:calc(230px + env(safe-area-inset-bottom))}bod
    <li>Rests longer than about 5 minutes are less likely to notify in the background.</li>
    <li>If you reopen the app after the rest ended, it shows "Rest finished" instead of beeping late.</li>
   </ul></div>
-  <h3>Rest time per exercise</h3>
-  <p class="small-note">Seconds of rest after each completed set. Saved per workout day, so the same exercise can have different rest on different days. You can also change these inside each exercise during a workout.</p>
-  <div id="restEditor" class="rest-editor"></div>
-  <div class="actions" style="margin-top:12px"><button type="button" class="secondary danger" id="resetRest">Reset all rest times to routine defaults</button></div>
   <h3>Data &amp; storage</h3>
   <div id="storageStatus" class="status-list"></div>
+  <div class="actions" style="margin-top:14px"><button type="button" class="secondary danger" id="wipeAll">Delete all workout history</button></div>
+  <p class="small-note">Deletes every saved workout and exercise log on this phone. Your routine and settings are kept. To delete a single workout instead: Workout history → tap the workout → 🗑 Delete this workout.</p>
   <p class="small-note" style="margin-top:16px">VOLT Workout Tracker <span id="appVersion"></span></p>
  </div>
 </div>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
+<div id="routineSheet" class="sheet sheet-top hide" role="dialog" aria-modal="true" aria-labelledby="routineTitle">
+ <div class="sheet-card">
+  <div class="sheet-head"><h2 id="routineTitle">Edit routine</h2><div class="actions"><button type="button" id="routineCancel" class="secondary">Cancel</button><button type="button" id="routineSave" class="primary">Save</button></div></div>
+  <p class="small-note"><b id="routineSummary"></b><br>Changes apply from your next workout. Renaming an exercise renames it on every day it appears (it's the same exercise with shared progression). Removing an exercise keeps its history — add it back any time from your exercise list.</p>
+  <div id="routineDays"></div>
+  <button type="button" class="secondary full" id="addDay" style="margin-top:6px">＋ Add workout day</button>
+  <div class="actions" style="margin-top:22px"><button type="button" class="secondary danger" id="resetRoutine">Reset to original VOLT program</button></div>
+ </div>
+</div>
+
+<div id="pickerSheet" class="sheet sheet-picker hide" role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
+ <div class="sheet-card">
+  <div class="sheet-head"><h2 id="pickerTitle">Add exercise</h2><button type="button" id="pickerClose" class="secondary">Cancel</button></div>
+  <label class="fieldlabel" for="newExName">Create a new exercise</label>
+  <div class="pick-new"><input id="newExName" class="txt" placeholder="e.g. Hip Abduction (Machine)" maxlength="80" autocomplete="off"><button type="button" id="newExAdd" class="primary">Add</button></div>
+  <p class="small-note">New exercises start at 3 sets · goal 30 total reps · +5 lb · 1:30 rest. You can change all of these.</p>
+  <label class="fieldlabel" for="pickerSearch" style="margin-top:14px">Or pick one of your exercises (keeps its progression history)</label>
+  <input id="pickerSearch" class="txt" placeholder="Search…" autocomplete="off">
+  <div id="pickerList" class="pick-list"></div>
+ </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 'use strict';
-const APP_VERSION='3.0.0';
-// [id, name, work sets, total-rep goal, weight increment (lb), rest seconds]
-const days=[
- {id:'mon',name:'Monday',title:'Pull A',ex:[
+const APP_VERSION='3.2.0';
+const WEEKDAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+// Original VOLT program. Exercise = [id, name, work sets, total-rep goal, weight increment (lb), rest seconds]
+const DEFAULT_ROUTINE=[
+ {id:'mon',weekday:1,title:'Pull A',ex:[
  ['lat-machine','Lat Pulldown (Machine · Nautilus)',3,30,5,150],
  ['tbar','Chest Supported T-Bar Row',3,30,5,150],
  ['iso-row','Iso-Lateral Row (Machine)',2,20,5,120],
@@ -136,20 +173,20 @@ const days=[
  ['rear-fly','Rear Delt Reverse Fly (Machine)',3,40,5,90],
  ['bicep','Bicep Curl (Machine)',3,36,5,90],
  ['reverse','Reverse Curl (Cable)',2,26,2.5,90]]},
- {id:'tue',name:'Tuesday',title:'Legs + Side Delts',ex:[
+ {id:'tue',weekday:2,title:'Legs + Side Delts',ex:[
  ['lateral','Lateral Raise (Machine)',5,65,5,90],
  ['hack','Hack Squat (Machine)',3,30,5,180],
  ['hyper','Back Extension (Weighted Hyperextension)',3,36,5,120],
  ['leg-curl','Seated Leg Curl (Machine)',3,36,5,120],
  ['leg-ext','Leg Extension (Machine)',3,36,5,90]]},
- {id:'thu',name:'Thursday',title:'Push A + Calves / Core',ex:[
+ {id:'thu',weekday:4,title:'Push A + Calves / Core',ex:[
  ['incline','Incline Chest Press (Machine)',4,40,5,150],
  ['chest','Chest Press (Machine)',2,20,5,150],
  ['pec','Butterfly (Pec Deck)',2,26,5,90],
  ['triceps','Overhead Triceps Extension (Cable)',4,50,2.5,90],
  ['calves','Standing Calf Raise (Machine)',3,40,5,90],
  ['crunch','Cable Crunch',2,26,5,90]]},
- {id:'fri',name:'Friday',title:'Pull B + Side Delts / Back',ex:[
+ {id:'fri',weekday:5,title:'Pull B + Side Delts / Back',ex:[
  ['lateral','Lateral Raise (Machine)',4,52,5,90],
  ['lat-cable','Lat Pulldown (Cable)',3,30,5,150],
  ['seated-row','Seated Row (Machine)',3,30,5,150],
@@ -158,7 +195,7 @@ const days=[
  ['rear-fly','Rear Delt Reverse Fly (Machine)',3,40,5,90],
  ['bicep','Bicep Curl (Machine)',3,36,5,90],
  ['reverse','Reverse Curl (Cable)',2,26,2.5,90]]},
- {id:'sun',name:'Sunday',title:'Push B + Side Delts / Calves / Core',ex:[
+ {id:'sun',weekday:0,title:'Push B + Side Delts / Calves / Core',ex:[
  ['lateral','Lateral Raise (Machine)',4,52,5,90],
  ['incline','Incline Chest Press (Machine)',4,40,5,150],
  ['chest','Chest Press (Machine)',2,20,5,150],
@@ -167,13 +204,58 @@ const days=[
  ['calves','Standing Calf Raise (Machine)',3,40,5,90],
  ['crunch','Cable Crunch',2,26,5,90]]}
 ];
+const NEW_EX_DEFAULT=[3,30,5,90];
+const MAX_SETS=12;
+let days=[]; // = data.routine
+
+/* ================= helpers ================= */
+const $=id=>document.getElementById(id);
+const clone=o=>JSON.parse(JSON.stringify(o));
+const clampInt=(v,min,max,def)=>{v=Math.round(Number(v));return Number.isFinite(v)?Math.min(max,Math.max(min,v)):def};
+const clampNum=(v,min,max,def)=>{v=Number(v);return Number.isFinite(v)&&v>=min&&v<=max?v:def};
+const fmt=n=>n==null||n===''?'—':Number(Number(n).toFixed(2)).toString();
+const round2=n=>Math.round(n*100)/100;
+const safe=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateStr=ms=>new Date(ms).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+const shortDate=ms=>new Date(ms).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'2-digit'});
+const weekdayOf=ms=>WEEKDAYS[new Date(ms).getDay()];
+const duration=ms=>{let seconds=Math.max(0,Math.floor(ms/1000));const h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;return [h,m,s].map(n=>String(n).padStart(2,'0')).join(':')};
+const mmss=sec=>{sec=Math.max(0,Math.round(sec));return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')};
+const shortName=n=>String(n).replace(/\s*\(.*\)$/,'');
+const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(r,ms,null))]);
+const newId=prefix=>prefix+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const scaleGoal=(goal,oldSets,newSets)=>Math.max(1,Math.round(goal*newSets/oldSets));
+let toastTimer=null;function toast(msg,ms=2600){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),ms)}
+window.__voltTest={chimes:0,vibrations:0,pageNotifications:0,swSchedules:0};
+
+function sanitizeEx(e){if(!Array.isArray(e)||typeof e[0]!=='string'||!e[0])return null;const sets=clampInt(e[2],1,MAX_SETS,3);
+ return [e[0],String(e[1]||e[0]).trim().slice(0,80)||e[0],sets,clampInt(e[3],1,999,sets*10),clampNum(e[4],0.01,100,5),clampInt(e[5],5,1800,90)]}
+function syncNames(list=days){for(const d of list)d.name=d.weekday==null?'Any day':WEEKDAYS[d.weekday]}
+function normalizeRoutine(raw,legacySettings){
+ const src=Array.isArray(raw)&&raw.length?raw:clone(DEFAULT_ROUTINE);const seenDays=new Set();
+ const out=src.filter(d=>d&&typeof d==='object').map(d=>{let id=typeof d.id==='string'&&d.id?d.id:newId('d-');if(seenDays.has(id))id=newId('d-');seenDays.add(id);
+  const seen=new Set();const ex=(Array.isArray(d.ex)?d.ex:[]).map(sanitizeEx).filter(e=>e&&!seen.has(e[0])&&seen.add(e[0]));
+  const wd=Number(d.weekday);return {id,weekday:d.weekday!=null&&d.weekday!==''&&Number.isInteger(wd)&&wd>=0&&wd<=6?wd:null,title:String(d.title||'Workout').trim().slice(0,60)||'Workout',ex}});
+ if(!out.length)return normalizeRoutine(null,legacySettings);
+ // Older versions kept goal/increment/rest edits in data.settings — fold them into the routine.
+ if(legacySettings&&typeof legacySettings==='object')for(const d of out)for(const e of d.ex){const c=legacySettings[d.id+'::'+e[0]];if(c&&typeof c==='object'){if(c.goal!=null)e[3]=clampInt(c.goal,1,999,e[3]);if(c.increment!=null)e[4]=clampNum(c.increment,0.01,100,e[4]);if(c.rest!=null)e[5]=clampInt(c.rest,5,1800,e[5])}}
+ syncNames(out);return out}
+function dayById(id){return days.find(d=>d.id===id)}
+const slotId=(d,e)=>d.id+'::'+e[0];
+const dayLabel=d=>d.weekday==null?d.title:d.name;
+const weeklySets=()=>days.reduce((s,d)=>s+d.ex.reduce((a,e)=>a+e[2],0),0);
+function todayDay(){const wd=new Date().getDay();return days.find(d=>d.weekday===wd)||null}
+function settings(d,e){return {goal:e[3],increment:e[4],rest:e[5]}}
+function historyLatest(movement){let r=null;for(const h of data.history){if(h.movement===movement&&(!r||h.timestamp>r.timestamp))r=h}return r}
+function nextWeight(movement,inc){const h=historyLatest(movement);if(!h)return null;const step=Number.isFinite(inc)&&inc>0?inc:(Number(h.increment)||5);return round2(Number(h.weight)+(h.hit?step:0))}
+function sessionLabel(s){return `${weekdayOf(s.startedAt)} — ${s.title||dayById(s.dayId)?.title||'Workout'}`}
 
 /* ================= storage ================= */
 const LEGACY_KEY='volt-total-rep-2026-v1'; // key used by the original HTML tracker (v1/v2)
 const LS_KEY='volt-pwa-state-v3';
 const DB_NAME='volt-tracker',STORE='kv';
-const defaultPrefs=()=>({autoRest:true,sound:true,vibrate:true,notify:false,wakeLock:false,lastExportAt:null});
-const emptyData=()=>({schema:3,history:[],settings:{},drafts:{},sessions:[],activeSession:null,prefs:defaultPrefs(),savedAt:0});
+const defaultPrefs=()=>({autoRest:true,sound:true,volume:80,sharpTone:false,vibrate:true,notify:false,wakeLock:false,lastExportAt:null});
+const emptyData=()=>({schema:4,routine:null,history:[],settings:{},drafts:{},sessions:[],activeSession:null,prefs:defaultPrefs(),savedAt:0});
 let data=emptyData(),idbOK=true,lsOK=true,persistGranted=null,migratedFromLegacy=false,loaded=false;
 let dbPromise=null,pendingJSON=null,idbTimer=null;
 function openDB(){if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{if(!('indexedDB' in window))return reject(new Error('IndexedDB unavailable'));const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>req.result.createObjectStore(STORE);req.onsuccess=()=>{const db=req.result;db.onversionchange=()=>db.close();resolve(db)};req.onerror=()=>reject(req.error);req.onblocked=()=>reject(new Error('IndexedDB blocked'))});dbPromise.catch(()=>{dbPromise=null});return dbPromise}
@@ -185,23 +267,27 @@ function persist(){if(!loaded)return;data.savedAt=Date.now();const json=JSON.str
 function flushIDB(){clearTimeout(idbTimer);if(pendingJSON==null)return Promise.resolve();const json=pendingJSON;pendingJSON=null;
  return idbSet('state',json).then(()=>{idbOK=true;warning()}).catch(()=>{idbOK=false;warning()})}
 const parseMaybe=s=>{try{const o=typeof s==='string'?JSON.parse(s):s;return o&&typeof o==='object'&&!Array.isArray(o)?o:null}catch(e){return null}};
+function newEntry(d,e){const suggested=nextWeight(e[0],e[4]),draft=data.drafts?.[slotId(d,e)];return {weight:draft?.weight??(suggested===null?'':String(suggested)),reps:Array.from({length:e[2]},(_,i)=>draft?.reps?.[i]??''),done:Array.from({length:e[2]},()=>false),weightEdited:false}}
 function normalize(raw){
  const d={...emptyData(),...(raw||{})};
  if(!Array.isArray(d.history))d.history=[];
  d.history=d.history.filter(h=>h&&typeof h==='object'&&h.movement&&Number.isFinite(Number(h.timestamp)));
  if(!Array.isArray(d.sessions))d.sessions=[];
  d.sessions=d.sessions.filter(s=>s&&typeof s==='object');
- if(!d.settings||typeof d.settings!=='object'||Array.isArray(d.settings))d.settings={};
  if(!d.drafts||typeof d.drafts!=='object'||Array.isArray(d.drafts))d.drafts={};
  d.prefs={...defaultPrefs(),...(d.prefs&&typeof d.prefs==='object'?d.prefs:{})};
- const a=d.activeSession;
- if(a&&(typeof a!=='object'||!dayById(a.dayId)||!Number.isFinite(a.startedAt)))d.activeSession=null;
- if(d.activeSession){const day=dayById(a.dayId);if(!a.entries||typeof a.entries!=='object')a.entries={};
-  for(const e of day.ex){const s=slotId(day,e),r=a.entries[s]||{weight:'',reps:[],weightEdited:false};
+ const hadRoutine=Array.isArray(raw?.routine)&&raw.routine.length>0;
+ d.routine=normalizeRoutine(d.routine,hadRoutine?null:d.settings);d.settings={};
+ const findDay=id=>d.routine.find(x=>x.id===id);const a=d.activeSession;
+ if(a&&(typeof a!=='object'||!findDay(a.dayId)||!Number.isFinite(a.startedAt)))d.activeSession=null;
+ if(d.activeSession){const day=findDay(a.dayId);
+  a.plan=(Array.isArray(a.plan)?a.plan:clone(day.ex)).map(sanitizeEx).filter(Boolean);
+  if(!a.entries||typeof a.entries!=='object')a.entries={};
+  for(const e of a.plan){const s=slotId(day,e),r=a.entries[s]||{weight:'',reps:[],weightEdited:false};
    r.reps=Array.from({length:e[2]},(_,i)=>r.reps?.[i]??'');r.done=Array.from({length:e[2]},(_,i)=>!!r.done?.[i]);if(r.weight==null)r.weight='';a.entries[s]=r}
-  if(a.rest&&!(typeof a.rest==='object'&&Number.isFinite(a.rest.totalMs)))a.rest=null;
-  if(a.rest===undefined)a.rest=null}
- d.schema=3;return d}
+  if(!a.rest||typeof a.rest!=='object'||!Number.isFinite(a.rest.totalMs))a.rest=null}
+ d.schema=4;return d}
+function setData(d){data=d;days=data.routine;syncNames()}
 async function loadData(){
  let idbRaw=null,lsRaw=null,legacyRaw=null;
  try{idbRaw=await idbGet('state')}catch(e){idbOK=false}
@@ -209,67 +295,56 @@ async function loadData(){
  const a=parseMaybe(idbRaw),b=parseMaybe(lsRaw);let chosen;
  if(a&&b)chosen=(Number(b.savedAt)||0)>(Number(a.savedAt)||0)?b:a;else chosen=a||b;
  if(!chosen){const legacy=parseMaybe(legacyRaw);if(legacy){chosen=legacy;migratedFromLegacy=true}}
- data=normalize(chosen);loaded=true;persist();await flushIDB();
+ setData(normalize(chosen));loaded=true;persist();await flushIDB();
  if(navigator.storage?.persist){try{persistGranted=await navigator.storage.persisted();if(!persistGranted)persistGranted=await navigator.storage.persist()}catch(e){}}
 }
 function warning(){const el=$('saveWarning');if(!el)return;el.textContent=(!idbOK&&!lsOK)?'⚠ This browser is not letting the app save data. Export a backup right after your workout.':(!idbOK?'⚠ IndexedDB unavailable — using local storage only. Export backups regularly.':(!lsOK?'⚠ Backup copy in local storage failed (storage may be full). Main database still OK.':''))}
 window.addEventListener('pagehide',()=>{flushIDB()});
 
-/* ================= helpers ================= */
-const $=id=>document.getElementById(id);
-const fmt=n=>n==null||n===''?'—':Number(Number(n).toFixed(2)).toString();
-const round2=n=>Math.round(n*100)/100;
-const safe=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const dateStr=ms=>new Date(ms).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
-const shortDate=ms=>new Date(ms).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'2-digit'});
-const duration=ms=>{let seconds=Math.max(0,Math.floor(ms/1000));const h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;return [h,m,s].map(n=>String(n).padStart(2,'0')).join(':')};
-const mmss=sec=>{sec=Math.max(0,Math.round(sec));return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')};
-const withTimeout=(p,ms)=>Promise.race([p,new Promise(r=>setTimeout(r,ms,null))]);
-const dayOfWeek={0:'sun',1:'mon',2:'tue',4:'thu',5:'fri'};
-const todayId=dayOfWeek[new Date().getDay()]||null;
-let selectedDay=todayId||'mon',latestResult=null;
-function dayById(id){return days.find(d=>d.id===id)}
-const slotId=(d,e)=>d.id+'::'+e[0];
-function settings(d,e){const c=data.settings[slotId(d,e)]||{};const rest=Number(c.rest??e[5]);return {goal:Number(c.goal??e[3]),increment:Number(c.increment??e[4]),rest:Number.isFinite(rest)&&rest>0?rest:e[5]}}
-function historyLatest(movement){let r=null;for(const h of data.history){if(h.movement===movement&&(!r||h.timestamp>r.timestamp))r=h}return r}
-function nextWeight(movement,inc){const h=historyLatest(movement);if(!h)return null;const step=Number.isFinite(inc)&&inc>0?inc:(Number(h.increment)||5);return round2(Number(h.weight)+(h.hit?step:0))}
-function dayNameOfSlot(slot){return dayById(String(slot||'').split('::')[0])?.name||''}
-let toastTimer=null;function toast(msg,ms=2600){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),ms)}
-window.__voltTest={chimes:0,vibrations:0,pageNotifications:0,swSchedules:0};
+/* ================= sheets ================= */
+function openSheet(id){$(id).classList.remove('hide');document.body.style.overflow='hidden'}
+function closeSheet(id){$(id).classList.add('hide');if(!document.querySelector('.sheet:not(.hide)'))document.body.style.overflow=''}
 
 /* ================= rendering ================= */
+let selectedDay=null,latestResult=null;const openCardDetails=new Set();
 function currentSession(){return data.activeSession}
-function render(){warning();const a=currentSession();$('loading').classList.add('hide');$('home').classList.toggle('hide',!!a||!!latestResult);$('sessionView').classList.toggle('hide',!a);$('activeBar').classList.toggle('hide',!a);$('completedView').classList.toggle('hide',!!a||!latestResult);
+function activeDay(){return data.activeSession?dayById(data.activeSession.dayId):null}
+function routineEx(dayId,mid){return dayById(dayId)?.ex.find(e=>e[0]===mid)||null}
+function render(){warning();const a=currentSession();$('subline').textContent=`${weeklySets()} weekly sets · total-rep progression · workout & rest timers`;
+ $('loading').classList.add('hide');$('home').classList.toggle('hide',!!a||!!latestResult);$('sessionView').classList.toggle('hide',!a);$('activeBar').classList.toggle('hide',!a);$('completedView').classList.toggle('hide',!!a||!latestResult);
  if(a){renderActive();updateTimer()}else{renderHome();if(latestResult)renderCompleted();else $('completedView').innerHTML=''}
  renderHistory();renderProgress();renderBackupNote();renderRest();syncWakeLock()}
 function renderHome(){
- const recent=data.sessions.slice().sort((a,b)=>b.endedAt-a.endedAt)[0];
+ if(!dayById(selectedDay))selectedDay=(todayDay()||days[0]).id;
+ const today=todayDay(),recent=data.sessions.slice().sort((a,b)=>b.endedAt-a.endedAt)[0];
  const d=dayById(selectedDay),sets=d.ex.reduce((sum,e)=>sum+e[2],0);
  const empty=!data.history.length&&!data.sessions.length;
- $('home').innerHTML=`${migratedFromLegacy?'<div class="notice"><b>Old tracker data found and moved.</b> Your history from the previous VOLT tracker was copied into the app database.</div>':''}${empty?`<div class="notice"><b>Coming from the old VOLT HTML file?</b> Open the old file, tap <i>Export backup (.json)</i>, then come back here and import it. Your old history does not move over by itself.<div class="actions"><button type="button" class="secondary" id="homeImport">Import backup</button></div></div>`:''}<section class="hero"><div class="eyeline"><span class="chip ${todayId?'positive':'warn'}">${todayId?'TODAY: '+safe(dayById(todayId).name.toUpperCase()):'REST DAY · CHOOSE A WORKOUT'}</span><span class="chip">${data.sessions.length} saved sessions</span></div><h2 class="hero-title">Ready for ${safe(d.name)}?</h2><p>Tap Start Workout to load every exercise and begin the timer. Enter weight and reps, then tap ✓ on each set to start your rest timer. The workout timer stops only when you finish.</p><div class="daynav" id="dayChooser">${days.map(day=>`<button type="button" data-pick="${day.id}" class="${day.id===selectedDay?'active':''}">${day.name}<span>${safe(day.title)}</span></button>`).join('')}</div><div class="eyeline" style="margin:13px 0"><span class="chip">${d.ex.length} exercises</span><span class="chip">${sets} work sets</span><span class="chip">No rep ranges</span></div><button class="primary full big-start" id="startBtn">▶ START ${safe(d.name.toUpperCase())} WORKOUT</button></section>
+ $('home').innerHTML=`${migratedFromLegacy?'<div class="notice"><b>Old tracker data found and moved.</b> Your history from the previous VOLT tracker was copied into the app database.</div>':''}${empty?`<div class="notice"><b>Coming from the old VOLT HTML file?</b> Open the old file, tap <i>Export backup (.json)</i>, then come back here and import it. Your old history does not move over by itself.<div class="actions"><button type="button" class="secondary" id="homeImport">Import backup</button></div></div>`:''}<section class="hero"><div class="eyeline"><span class="chip ${today?'positive':'warn'}">${today?'TODAY: '+safe(today.name.toUpperCase()):'REST DAY · CHOOSE A WORKOUT'}</span><span class="chip">${data.sessions.length} saved sessions</span></div><h2 class="hero-title">Ready for ${safe(dayLabel(d))}?</h2><p>Tap Start Workout to load every exercise and begin the timer. Enter weight and reps, then tap ✓ on each set to start your rest timer. The workout timer stops only when you finish.</p><div class="daynav" id="dayChooser">${days.map(day=>`<button type="button" data-pick="${safe(day.id)}" class="${day.id===selectedDay?'active':''}">${safe(day.name)}<span>${safe(day.title)}</span></button>`).join('')}</div><div class="eyeline" style="margin:13px 0"><span class="chip">${d.ex.length} exercises</span><span class="chip">${sets} work sets</span><span class="chip">No rep ranges</span></div><button class="primary full big-start" id="startBtn">▶ START ${safe(dayLabel(d).toUpperCase())} WORKOUT</button><button type="button" class="secondary full" id="editRoutineHome" style="margin-top:9px">✎ Edit routine</button></section>
  <div class="metrics"><div class="metric"><b>${data.sessions.length}</b><span>Workouts finished</span></div><div class="metric"><b>${data.history.length}</b><span>Exercise logs</span></div><div class="metric"><b>${recent?duration(recent.durationMs):'—'}</b><span>Latest workout time</span></div></div>
- <div class="panel"><strong>${safe(d.name)} — ${safe(d.title)}</strong><div class="result-list">${d.ex.map(e=>{const c=settings(d,e),s=nextWeight(e[0],c.increment);return `<div class="result-row"><span>${safe(e[1])}<br><small class="small-note">${e[2]} sets · goal ${c.goal} total reps · rest ${mmss(c.rest)}</small></span><span>${s===null?'new':fmt(s)+' lb'}</span></div>`}).join('')}</div></div>
+ <div class="panel"><strong>${safe(d.name)} — ${safe(d.title)}</strong><div class="result-list">${d.ex.length?d.ex.map(e=>{const s=nextWeight(e[0],e[4]);return `<div class="result-row"><span>${safe(e[1])}<br><small class="small-note">${e[2]} sets · goal ${e[3]} total reps · rest ${mmss(e[5])}</small></span><span>${s===null?'new':fmt(s)+' lb'}</span></div>`}).join(''):'<p class="small-note">No exercises yet — tap Edit routine to add some.</p>'}</div></div>
  <div class="panel" style="margin-top:12px"><strong>How progression works</strong><p>Each exercise has one total-rep goal. Your set reps are added together. Meet the goal and the next workout suggests a heavier weight; miss it and the weight stays the same. No set-by-set rep targets.</p></div>`;
  $('dayChooser').querySelectorAll('[data-pick]').forEach(btn=>btn.addEventListener('click',()=>{selectedDay=btn.dataset.pick;renderHome()}));
  $('startBtn').addEventListener('click',startWorkout);
+ $('editRoutineHome').addEventListener('click',()=>openRoutine(selectedDay));
  $('homeImport')?.addEventListener('click',()=>$('backupFile').click());
 }
 function startWorkout(){if(currentSession())return;unlockAudio();
- const d=dayById(selectedDay),entries={};
- for(const e of d.ex){const cfg=settings(d,e),suggested=nextWeight(e[0],cfg.increment),draft=data.drafts[slotId(d,e)];entries[slotId(d,e)]={weight:draft?.weight??(suggested===null?'':String(suggested)),reps:Array.from({length:e[2]},(_,i)=>draft?.reps?.[i]??''),done:Array.from({length:e[2]},()=>false),weightEdited:false}}
- data.activeSession={dayId:d.id,startedAt:Date.now(),entries,rest:null};persist();latestResult=null;render();window.scrollTo({top:0,behavior:'instant'});
+ const d=dayById(selectedDay);if(!d.ex.length){toast('This workout has no exercises yet — add some first');openRoutine(d.id);return}
+ const plan=clone(d.ex),entries={};for(const e of plan)entries[slotId(d,e)]=newEntry(d,e);
+ openCardDetails.clear();data.activeSession={dayId:d.id,startedAt:Date.now(),plan,entries,rest:null};persist();latestResult=null;render();window.scrollTo({top:0,behavior:'instant'});
 }
 function renderActive(){
- const a=currentSession(),d=dayById(a.dayId),count=d.ex.reduce((s,e)=>s+e[2],0);
+ const a=currentSession(),d=activeDay(),plan=a.plan,count=plan.reduce((s,e)=>s+e[2],0);
  $('sessionTitle').innerHTML=`<div class="eyeline"><span class="chip positive">● WORKOUT IN PROGRESS</span><span class="chip">${safe(d.name)} · ${count} sets</span></div><h2>${safe(d.name)} — ${safe(d.title)}</h2><p>Started ${dateStr(a.startedAt)} · tap ✓ after each set to start rest</p>`;
- $('workoutExercises').innerHTML=d.ex.map((e,index)=>renderExerciseCard(d,e,index)).join('');
- d.ex.forEach(e=>bindCard(d,e));
+ $('workoutExercises').innerHTML=(plan.length?plan.map((e,index)=>renderExerciseCard(d,e,index,plan.length)).join(''):'<p class="small-note">No exercises in this workout.</p>')+`<button type="button" class="secondary full addex" id="addExWorkout">＋ Add exercise to this workout</button>`;
+ plan.forEach(e=>bindCard(d,e));
+ $('addExWorkout').addEventListener('click',()=>openPicker({exclude:new Set(plan.map(e=>e[0])),onPick:addExerciseToWorkout}));
 }
-function lastText(e){const prev=historyLatest(e[0]);if(!prev)return 'First time logging this exercise';const day=dayNameOfSlot(prev.slot);return `Last${day?' ('+day+')':''}: ${fmt(prev.weight)} lb · ${(prev.reps||[]).join(' + ')} = ${prev.total} / goal ${prev.goal} ${prev.hit?'✓ goal met':'· goal missed'}`}
-function subText(e,cfg){return `${e[2]} work sets · goal ${cfg.goal} total reps · rest ${mmss(cfg.rest)}`}
-function renderExerciseCard(d,e,index){
- const a=currentSession(),slot=slotId(d,e),cfg=settings(d,e),entry=a.entries[slot];const suggested=nextWeight(e[0],cfg.increment);
- return `<article class="ex" data-ex="${safe(slot)}"><div class="ex-head"><div><div class="ex-title">${index+1}. ${safe(e[1])}</div><div class="ex-sub">${subText(e,cfg)}</div></div><div class="ex-side"><strong>${suggested===null?'Choose lb':fmt(suggested)+' lb'}</strong><span>${suggested===null?'Starting weight':'Suggested weight'}</span></div></div><div class="ex-content"><div class="lastnote">${safe(lastText(e))}</div><div class="inputrow"><div><label class="fieldlabel" for="wt-${safe(slot)}">Weight (lb)</label><input id="wt-${safe(slot)}" class="field-input" data-field="weight" type="number" min="0" step="any" inputmode="decimal" placeholder="lb" value="${safe(entry.weight??'')}"></div><div><span class="fieldlabel">Reps per set — tap ✓ when the set is done</span><div class="sets">${Array.from({length:e[2]},(_,i)=>`<div class="set${entry.done[i]?' done':''}" data-set="${i}"><label for="rep-${safe(slot)}-${i}">Set ${i+1}</label><input id="rep-${safe(slot)}-${i}" data-field="rep" data-index="${i}" type="number" min="0" step="1" inputmode="numeric" placeholder="—" value="${safe(entry.reps?.[i]??'')}"><button type="button" class="setcheck" data-check="${i}" aria-pressed="${entry.done[i]}" aria-label="Mark set ${i+1} complete and start rest">✓</button></div>`).join('')}</div></div></div><div class="progress"><div class="progress-top"><strong data-role="total">0 / ${cfg.goal}</strong><span data-role="ratio">0%</span></div><div class="track"><div class="fill" data-role="fill"></div></div><div class="progress-note" data-role="message">Enter your completed reps</div></div><details><summary>Edit total-rep goal / weight increment / rest time</summary><div class="settings"><div><label class="fieldlabel">Total-rep goal</label><input class="field-input" data-field="goal" type="number" min="1" step="1" inputmode="numeric" value="${cfg.goal}"></div><div><label class="fieldlabel">Increment (lb)</label><input class="field-input" data-field="increment" type="number" min="0.01" step="any" inputmode="decimal" value="${cfg.increment}"></div><div><label class="fieldlabel">Rest (seconds)</label><input class="field-input" data-field="rest" type="number" min="5" max="1800" step="5" inputmode="numeric" value="${cfg.rest}"></div></div></details></div></article>`;
+function lastText(e){const prev=historyLatest(e[0]);if(!prev)return 'First time logging this exercise';return `Last (${weekdayOf(prev.timestamp)}): ${fmt(prev.weight)} lb · ${(prev.reps||[]).join(' + ')} = ${prev.total} / goal ${prev.goal} ${prev.hit?'✓ goal met':'· goal missed'}`}
+function subText(e){return `${e[2]} work sets · goal ${e[3]} total reps · rest ${mmss(e[5])}`}
+function renderExerciseCard(d,e,index,n){
+ const a=currentSession(),slot=slotId(d,e),entry=a.entries[slot];const suggested=nextWeight(e[0],e[4]);
+ return `<article class="ex" data-ex="${safe(slot)}"><div class="ex-head"><div><div class="ex-title">${index+1}. ${safe(e[1])}</div><div class="ex-sub">${subText(e)}</div></div><div class="ex-side"><strong>${suggested===null?'Choose lb':fmt(suggested)+' lb'}</strong><span>${suggested===null?'Starting weight':'Suggested weight'}</span></div></div><div class="ex-content"><div class="lastnote">${safe(lastText(e))}</div><div class="inputrow"><div><label class="fieldlabel" for="wt-${safe(slot)}">Weight (lb)</label><input id="wt-${safe(slot)}" class="field-input" data-field="weight" type="number" min="0" step="any" inputmode="decimal" placeholder="lb" value="${safe(entry.weight??'')}"></div><div><span class="fieldlabel">Reps per set — tap ✓ when the set is done</span><div class="sets">${Array.from({length:e[2]},(_,i)=>`<div class="set${entry.done[i]?' done':''}" data-set="${i}"><label for="rep-${safe(slot)}-${i}">Set ${i+1}</label><input id="rep-${safe(slot)}-${i}" data-field="rep" data-index="${i}" type="number" min="0" step="1" inputmode="numeric" placeholder="—" value="${safe(entry.reps?.[i]??'')}"><button type="button" class="setcheck" data-check="${i}" aria-pressed="${entry.done[i]}" aria-label="Mark set ${i+1} complete and start rest">✓</button></div>`).join('')}</div><button type="button" class="linkbtn" data-tool="addset" ${e[2]>=MAX_SETS?'disabled':''}>＋ Add set</button></div></div><div class="progress"><div class="progress-top"><strong data-role="total">0 / ${e[3]}</strong><span data-role="ratio">0%</span></div><div class="track"><div class="fill" data-role="fill"></div></div><div class="progress-note" data-role="message">Enter your completed reps</div></div><details data-details ${openCardDetails.has(slot)?'open':''}><summary>Edit exercise — sets, order, goal, increment, rest</summary><div class="ex-tools"><button type="button" class="secondary" data-tool="delset" ${e[2]<=1?'disabled':''}>− Last set</button><button type="button" class="secondary" data-tool="up" ${index===0?'disabled':''}>↑ Move up</button><button type="button" class="secondary" data-tool="down" ${index===n-1?'disabled':''}>↓ Move down</button><button type="button" class="secondary danger" data-tool="remove">✕ Remove</button></div><div class="settings"><div><label class="fieldlabel">Total-rep goal</label><input class="field-input" data-field="goal" type="number" min="1" step="1" inputmode="numeric" value="${e[3]}"></div><div><label class="fieldlabel">Increment (lb)</label><input class="field-input" data-field="increment" type="number" min="0.01" step="any" inputmode="decimal" value="${e[4]}"></div><div><label class="fieldlabel">Rest (seconds)</label><input class="field-input" data-field="rest" type="number" min="5" max="1800" step="5" inputmode="numeric" value="${e[5]}"></div></div><p class="small-note">Goal, increment and rest are saved to your routine. Adding/removing sets, reordering or removing exercises affects this workout — you'll be asked at the end whether to save them to your routine.</p></details></div></article>`;
 }
 function bindCard(d,e){
  const slot=slotId(d,e),card=[...document.querySelectorAll('[data-ex]')].find(n=>n.dataset.ex===slot);
@@ -286,73 +361,160 @@ function bindCard(d,e){
   r.reps=reps.map(x=>x.value);r.done[i]=true;persist();refreshCard(d,e,card);unlockAudio();
   if(data.prefs.autoRest)startRest(slot,i);
  }));
+ card.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>workoutTool(slot,b.dataset.tool)));
+ const det=card.querySelector('[data-details]');det.addEventListener('toggle',()=>{det.open?openCardDetails.add(slot):openCardDetails.delete(slot)});
  for(const field of ['goal','increment','rest']){
   card.querySelector(`[data-field="${field}"]`).addEventListener('change',event=>{
-   const value=Number(event.target.value);
-   const bad=!Number.isFinite(value)||value<=0||(field==='goal'&&!Number.isInteger(value))||(field==='rest'&&(value<5||value>1800));
-   if(bad){toast(field==='rest'?'Rest must be between 5 and 1800 seconds':'Enter a valid positive '+field);event.target.value=settings(d,e)[field];return}
-   data.settings[slot]??={};data.settings[slot][field]=field==='rest'?Math.round(value):value;persist();refreshCard(d,e,card);
-   card.querySelector('.ex-sub').textContent=subText(e,settings(d,e));
+   const k={goal:3,increment:4,rest:5}[field];let value=Number(event.target.value);
+   const bad=!Number.isFinite(value)||value<=0||(field==='goal'&&(!Number.isInteger(value)||value>999))||(field==='rest'&&(value<5||value>1800))||(field==='increment'&&value>100);
+   if(bad){toast(field==='rest'?'Rest must be between 5 and 1800 seconds':'Enter a valid positive '+field);event.target.value=e[k];return}
+   if(field!=='increment')value=Math.round(value);
+   e[k]=value;const re=routineEx(d.id,e[0]);if(re)re[k]=value;persist();refreshCard(d,e,card);
+   card.querySelector('.ex-sub').textContent=subText(e);
    if(field==='increment'){const s=nextWeight(e[0],value);card.querySelector('.ex-side strong').textContent=s===null?'Choose lb':fmt(s)+' lb'}
-   if(field==='rest')toast(`Rest for ${e[1]} saved: ${mmss(value)}`);
+   toast(field==='rest'?`Rest for ${shortName(e[1])} saved: ${mmss(value)}`:`${field==='goal'?'Goal':'Increment'} saved to your routine`);
   });
  }
  refreshCard(d,e,card);
 }
 function refreshCard(d,e,card){
- const entry=data.activeSession.entries[slotId(d,e)],cfg=settings(d,e),filled=entry.reps.filter(r=>String(r).trim()!=='').length,total=entry.reps.reduce((sum,r)=>sum+(String(r).trim()===''?0:Number(r)||0),0),complete=filled===e[2]&&String(entry.weight).trim()!=='';
- card.querySelector('[data-role="total"]').textContent=total+' / '+cfg.goal;
- card.querySelector('[data-role="ratio"]').textContent=Math.floor(total/cfg.goal*100)+'%';
- card.querySelector('[data-role="fill"]').style.width=Math.min(100,(total/cfg.goal)*100)+'%';
+ const entry=data.activeSession.entries[slotId(d,e)],goal=e[3],filled=entry.reps.filter(r=>String(r).trim()!=='').length,total=entry.reps.reduce((sum,r)=>sum+(String(r).trim()===''?0:Number(r)||0),0),complete=filled===e[2]&&String(entry.weight).trim()!=='';
+ card.querySelector('[data-role="total"]').textContent=total+' / '+goal;
+ card.querySelector('[data-role="ratio"]').textContent=Math.floor(total/goal*100)+'%';
+ card.querySelector('[data-role="fill"]').style.width=Math.min(100,(total/goal)*100)+'%';
  const msg=card.querySelector('[data-role="message"]');
- msg.textContent=!complete?`${filled}/${e[2]} sets entered${String(entry.weight).trim()===''?' · weight required to save':''}`:total>=cfg.goal?'GOAL MET — increase weight next session':'Need '+(cfg.goal-total)+' more total reps to reach goal · keep this weight next time';
- msg.className='progress-note'+(complete&&total>=cfg.goal?' good':'');
+ msg.textContent=!complete?`${filled}/${e[2]} sets entered${String(entry.weight).trim()===''?' · weight required to save':''}`:total>=goal?'GOAL MET — increase weight next session':'Need '+(goal-total)+' more total reps to reach goal · keep this weight next time';
+ msg.className='progress-note'+(complete&&total>=goal?' good':'');
  card.querySelectorAll('.set').forEach(box=>{const i=Number(box.dataset.set),on=!!entry.done[i];box.classList.toggle('done',on);box.querySelector('.setcheck').setAttribute('aria-pressed',String(on))});
 }
+function workoutTool(slot,tool){
+ const a=data.activeSession,d=activeDay();if(!a||!d)return;const plan=a.plan,idx=plan.findIndex(x=>slotId(d,x)===slot);if(idx<0)return;const e=plan[idx],entry=a.entries[slot];let scrollTo=null;
+ if(tool==='addset'){if(e[2]>=MAX_SETS){toast(`Max ${MAX_SETS} sets`);return}const old=e[2];e[2]++;e[3]=scaleGoal(e[3],old,e[2]);entry.reps.push('');entry.done.push(false);toast(`Set ${e[2]} added · goal now ${e[3]} total reps`)}
+ else if(tool==='delset'){if(e[2]<=1){toast('An exercise needs at least 1 set');return}const last=String(entry.reps[e[2]-1]??'').trim();if(last!==''&&!confirm(`Remove set ${e[2]} (${last} reps)?`))return;const old=e[2];e[2]--;e[3]=scaleGoal(e[3],old,e[2]);entry.reps.pop();entry.done.pop();toast(`Set removed · goal now ${e[3]} total reps`)}
+ else if(tool==='up'){if(idx===0)return;[plan[idx-1],plan[idx]]=[plan[idx],plan[idx-1]];scrollTo=slot}
+ else if(tool==='down'){if(idx===plan.length-1)return;[plan[idx+1],plan[idx]]=[plan[idx],plan[idx+1]];scrollTo=slot}
+ else if(tool==='remove'){const has=entry.reps.some(v=>String(v).trim()!=='');if(!confirm(`Remove ${e[1]} from this workout?${has?'\n\nThe reps you entered for it will be lost.':''}`))return;plan.splice(idx,1);delete a.entries[slot];openCardDetails.delete(slot);if(a.rest?.slot===slot){a.rest=null;cancelRestAlerts()}toast('Exercise removed from this workout')}
+ persist();renderActive();renderRest();
+ if(scrollTo)[...document.querySelectorAll('[data-ex]')].find(n=>n.dataset.ex===scrollTo)?.scrollIntoView({block:'center'});
+}
+function addExerciseToWorkout(item){const a=data.activeSession,d=activeDay();if(!a||!d)return;if(a.plan.some(e=>e[0]===item[0])){toast('Already in this workout');return}
+ a.plan.push(item);a.entries[slotId(d,item)]=newEntry(d,item);persist();renderActive();
+ [...document.querySelectorAll('[data-ex]')].find(n=>n.dataset.ex===slotId(d,item))?.scrollIntoView({block:'center'});toast(`Added ${shortName(item[1])}`)}
 function validateEntry(d,e){
  const row=data.activeSession.entries[slotId(d,e)]||{weight:'',reps:[]},w=String(row.weight??'').trim(),rs=row.reps||[];
  const hasReps=rs.some(v=>String(v??'').trim()!=='');
  if(!hasReps)return {kind:row.weightEdited?'partial':'skip'};
  const weight=Number(w),allReps=rs.length===e[2]&&rs.every(v=>String(v).trim()!==''&&Number.isInteger(Number(v))&&Number(v)>=0);
  if(!w||!Number.isFinite(weight)||weight<=0||!allReps)return {kind:'partial'};
- const reps=rs.map(Number),total=reps.reduce((s,n)=>s+n,0),cfg=settings(d,e);
- return {kind:'done',weight,reps,total,goal:cfg.goal,increment:cfg.increment,hit:total>=cfg.goal};
+ const reps=rs.map(Number),total=reps.reduce((s,n)=>s+n,0);
+ return {kind:'done',weight,reps,total,goal:e[3],increment:e[4],hit:total>=e[3]};
 }
+const planSig=list=>JSON.stringify(list.map(e=>[e[0],e[1],e[2]]));
 function finishWorkout(){
- const a=currentSession();if(!a)return;const day=dayById(a.dayId),completed=[],incomplete=[];
- for(const e of day.ex){const row=validateEntry(day,e);if(row.kind==='done')completed.push({e,row});else if(row.kind==='partial')incomplete.push(e[1])}
+ const a=currentSession();if(!a)return;const day=activeDay(),completed=[],incomplete=[];
+ for(const e of a.plan){const row=validateEntry(day,e);if(row.kind==='done')completed.push({e,row});else if(row.kind==='partial')incomplete.push(e[1])}
  if(incomplete.length){if(!confirm('These exercises have partial entries and will NOT be saved:\n\n'+incomplete.join('\n')+'\n\nFinish anyway? Cancel to complete your entries.'))return}
  if(completed.length===0){if(!confirm('No complete exercises are entered. Finish workout without exercise logs?'))return}
  const endedAt=Date.now(),elapsed=endedAt-a.startedAt,workoutId='w'+a.startedAt;
  const saved=[];
  for(const {e,row} of completed){const h={timestamp:endedAt,movement:e[0],slot:slotId(day,e),name:e[1],weight:row.weight,reps:row.reps,total:row.total,goal:row.goal,increment:row.increment,hit:row.hit,workoutId};data.history.push(h);saved.push(h);delete data.drafts[slotId(day,e)]}
  const session={id:workoutId,dayId:day.id,title:day.title,startedAt:a.startedAt,endedAt,durationMs:elapsed,exerciseCount:saved.length,entries:saved.map(h=>({movement:h.movement,slot:h.slot,total:h.total,goal:h.goal,hit:h.hit,weight:h.weight}))};
+ let routineUpdated=false;
+ if(planSig(a.plan)!==planSig(day.ex)&&confirm(`You changed this workout (sets, exercises or order).\n\nSave these changes to your ${dayLabel(day)} routine for next time?\n\nOK = update routine\nCancel = keep the routine as it was`)){day.ex=clone(a.plan);routineUpdated=true}
  cancelRestAlerts();data.sessions.push(session);data.activeSession=null;latestResult=session;persist();flushIDB();render();window.scrollTo({top:0,behavior:'instant'});
+ if(routineUpdated)toast('Workout saved · routine updated ✓');
 }
 function discardWorkout(){if(!currentSession())return;if(!confirm('Discard this workout and its unsaved exercise entries? This cannot be undone.'))return;cancelRestAlerts();data.activeSession=null;persist();render()}
 function updateTimer(){const a=currentSession();if(a)$('liveTimer').textContent=duration(Date.now()-a.startedAt)}
-function renderCompleted(){const s=latestResult,day=dayById(s.dayId),met=s.entries.filter(e=>e.hit).length,logs=data.history.filter(h=>h.workoutId===s.id);
- $('completedView').innerHTML=`<section class="hero"><span class="chip positive">✓ WORKOUT SAVED</span><h2 class="hero-title">${safe(day.name)} — Complete!</h2><div class="metrics"><div class="metric"><b>${duration(s.durationMs)}</b><span>Total workout time</span></div><div class="metric"><b>${s.exerciseCount}</b><span>Exercises logged</span></div><div class="metric"><b>${met}</b><span>Goals achieved</span></div></div>${logs.length?`<div class="result-list">${logs.map(h=>{const step=Number(h.increment)||0;return `<div class="result-row${h.hit?'':' miss'}"><span><b>${safe(h.name)}</b><br>${fmt(h.weight)} lb · ${h.reps.join(' + ')} = ${h.total} / ${h.goal}</span><span>${h.hit?'Next: '+fmt(round2(Number(h.weight)+step))+' lb ↑':'Next: '+fmt(h.weight)+' lb ='}</span></div>`}).join('')}</div>`:''}<p>Finished ${dateStr(s.endedAt)}. The next workout will use these progression suggestions.</p><button type="button" class="secondary" id="closeResults">Back to workouts</button></section>`;
+function renderCompleted(){const s=latestResult,met=s.entries.filter(e=>e.hit).length,logs=data.history.filter(h=>h.workoutId===s.id);
+ $('completedView').innerHTML=`<section class="hero"><span class="chip positive">✓ WORKOUT SAVED</span><h2 class="hero-title">${safe(sessionLabel(s))} — Complete!</h2><div class="metrics"><div class="metric"><b>${duration(s.durationMs)}</b><span>Total workout time</span></div><div class="metric"><b>${s.exerciseCount}</b><span>Exercises logged</span></div><div class="metric"><b>${met}</b><span>Goals achieved</span></div></div>${logs.length?`<div class="result-list">${logs.map(h=>{const step=Number(h.increment)||0;return `<div class="result-row${h.hit?'':' miss'}"><span><b>${safe(h.name)}</b><br>${fmt(h.weight)} lb · ${h.reps.join(' + ')} = ${h.total} / ${h.goal}</span><span>${h.hit?'Next: '+fmt(round2(Number(h.weight)+step))+' lb ↑':'Next: '+fmt(h.weight)+' lb ='}</span></div>`}).join('')}</div>`:''}<p>Finished ${dateStr(s.endedAt)}. The next workout will use these progression suggestions.</p><button type="button" class="secondary" id="closeResults">Back to workouts</button></section>`;
  $('closeResults').addEventListener('click',()=>{latestResult=null;render()});
 }
 function renderHistory(){
- const recent=data.sessions.slice().sort((a,b)=>b.endedAt-a.endedAt).slice(0,12);
- $('sessionHistory').innerHTML=recent.length?recent.map(s=>{const logs=data.history.filter(h=>h.workoutId===s.id);return `<details class="sess"><summary><strong>${safe(dayById(s.dayId)?.name||'Workout')} — ${duration(s.durationMs)}</strong><span>${dateStr(s.startedAt)} · ${s.exerciseCount} exercises logged · ${(s.entries||[]).filter(e=>e.hit).length} goals hit · tap for details</span></summary><div class="result-list">${logs.length?logs.map(h=>`<div class="result-row${h.hit?'':' miss'}"><span>${safe(h.name)}<br><small class="small-note">${fmt(h.weight)} lb · ${(h.reps||[]).join(' + ')}</small></span><span>${h.total}/${h.goal} ${h.hit?'✓':'✗'}</span></div>`).join(''):'<p class="small-note">No exercise details stored for this session.</p>'}</div></details>`}).join(''):'<p class="small-note">Your completed workouts and their durations will appear here.</p>';
+ const recent=data.sessions.slice().sort((a,b)=>b.endedAt-a.endedAt).slice(0,20);
+ $('sessionHistory').innerHTML=recent.length?recent.map(s=>{const logs=data.history.filter(h=>h.workoutId===s.id);return `<details class="sess"><summary><strong>${safe(sessionLabel(s))} · ${duration(s.durationMs)}</strong><span>${dateStr(s.startedAt)} · ${s.exerciseCount} exercises logged · ${(s.entries||[]).filter(e=>e.hit).length} goals hit · tap for details</span></summary><div class="result-list">${logs.length?logs.map(h=>`<div class="result-row${h.hit?'':' miss'}"><span>${safe(h.name)}<br><small class="small-note">${fmt(h.weight)} lb · ${(h.reps||[]).join(' + ')}</small></span><span>${h.total}/${h.goal} ${h.hit?'✓':'✗'}</span></div>`).join(''):'<p class="small-note">No exercise details stored for this session.</p>'}</div><div class="delrow"><button type="button" class="secondary danger" data-del-session="${safe(s.id)}">🗑 Delete this workout</button></div></details>`}).join(''):'<p class="small-note">Your completed workouts and their durations will appear here.</p>';
 }
 function movementList(){const seen=new Map();for(const d of days)for(const e of d.ex)if(!seen.has(e[0]))seen.set(e[0],e[1]);for(const h of data.history)if(!seen.has(h.movement))seen.set(h.movement,h.name||h.movement);return [...seen]}
 function renderProgress(){const sel=$('progressSelect'),prev=sel.value;sel.innerHTML=movementList().map(([id,name])=>{const n=data.history.filter(h=>h.movement===id).length;return `<option value="${safe(id)}">${safe(name)} (${n})</option>`}).join('');if(prev)sel.value=prev;if(!sel.value&&sel.options.length)sel.selectedIndex=0;showProgress()}
 function showProgress(){const id=$('progressSelect').value,logs=data.history.filter(h=>h.movement===id).sort((a,b)=>b.timestamp-a.timestamp);
- $('exerciseProgress').innerHTML=logs.length?`<div class="result-list">${logs.slice(0,40).map(h=>`<div class="result-row${h.hit?'':' miss'}"><span>${shortDate(h.timestamp)} · ${safe(dayNameOfSlot(h.slot))}<br><small class="small-note">${fmt(h.weight)} lb · ${(h.reps||[]).join(' + ')}</small></span><span>${h.total}/${h.goal} ${h.hit?'✓ ↑':'✗ ='}</span></div>`).join('')}</div>`:'<p class="small-note">No logs for this exercise yet.</p>'}
+ $('exerciseProgress').innerHTML=logs.length?`<div class="result-list">${logs.slice(0,40).map(h=>`<div class="result-row${h.hit?'':' miss'}"><span>${shortDate(h.timestamp)} · ${weekdayOf(h.timestamp)}<br><small class="small-note">${fmt(h.weight)} lb · ${(h.reps||[]).join(' + ')}</small></span><span>${h.total}/${h.goal} ${h.hit?'✓ ↑':'✗ ='}</span></div>`).join('')}</div>`:'<p class="small-note">No logs for this exercise yet.</p>'}
 function renderBackupNote(){const t=data.prefs.lastExportAt;$('backupNote').textContent=t?`Last backup exported ${dateStr(t)}.`:'You have not exported a backup from this app yet.'}
+
+/* ================= routine editor ================= */
+let rDraft=null,rSnapshot='',rOpen=new Set();
+function openRoutine(focusDayId){rDraft=clone(data.routine);rSnapshot=JSON.stringify(rDraft);rOpen=new Set(focusDayId&&dayById(focusDayId)?[focusDayId]:[]);openSheet('routineSheet');renderRoutine();
+ if(focusDayId)setTimeout(()=>[...document.querySelectorAll('[data-rday]')].find(n=>n.dataset.rday===focusDayId)?.scrollIntoView({block:'start'}),60)}
+function saveRoutine(){
+ if(data.activeSession&&!rDraft.some(d=>d.id===data.activeSession.dayId)){alert('You can’t delete the workout that is in progress. Finish or discard it first.');return}
+ for(const d of rDraft){d.title=d.title.trim()||'Workout'}
+ syncNames(rDraft);data.routine=rDraft;days=data.routine;rDraft=null;persist();flushIDB();closeSheet('routineSheet');render();toast('Routine saved ✓')}
+function cancelRoutine(){if(rDraft&&JSON.stringify(rDraft)!==rSnapshot&&!confirm('Discard your routine changes?'))return;rDraft=null;closeSheet('routineSheet')}
+function rexHtml(e,i,n){return `<div class="rex" data-rex="${safe(e[0])}"><div class="rex-top"><span class="rex-num">${i+1}</span><input class="txt" data-act="name" value="${safe(e[1])}" maxlength="80" aria-label="Exercise name"><button type="button" class="mini danger" data-act="ex-del" aria-label="Remove exercise">✕</button></div><div class="rex-grid"><div><label>Sets</label><div class="stepper"><button type="button" data-act="sets-dec" ${e[2]<=1?'disabled':''} aria-label="Fewer sets">−</button><b>${e[2]}</b><button type="button" data-act="sets-inc" ${e[2]>=MAX_SETS?'disabled':''} aria-label="More sets">+</button></div></div><div><label>Rep goal</label><input type="number" inputmode="numeric" min="1" step="1" data-act="goal" value="${e[3]}" aria-label="Total-rep goal"></div><div><label>+ lb</label><input type="number" inputmode="decimal" step="any" min="0.01" data-act="inc" value="${e[4]}" aria-label="Weight increment"></div><div><label>Rest (s)</label><input type="number" inputmode="numeric" step="5" min="5" max="1800" data-act="rest" value="${e[5]}" aria-label="Rest seconds"></div></div><div class="rex-move"><button type="button" class="mini" data-act="ex-up" ${i===0?'disabled':''}>↑ Move up</button><button type="button" class="mini" data-act="ex-down" ${i===n-1?'disabled':''}>↓ Move down</button></div></div>`}
+function renderRoutine(){syncNames(rDraft);const active=data.activeSession?.dayId;const wdCount={};rDraft.forEach(d=>{if(d.weekday!=null)wdCount[d.weekday]=(wdCount[d.weekday]||0)+1});
+ $('routineSummary').textContent=`${rDraft.length} workouts · ${rDraft.reduce((s,d)=>s+d.ex.reduce((a,e)=>a+e[2],0),0)} weekly sets`;
+ $('routineDays').innerHTML=rDraft.map((d,di)=>{const sets=d.ex.reduce((a,e)=>a+e[2],0),open=rOpen.has(d.id);
+  return `<section class="rday" data-rday="${safe(d.id)}"><div class="rday-head"><input class="txt rday-title" data-act="title" value="${safe(d.title)}" maxlength="60" aria-label="Workout name"><div class="rbtns"><button type="button" class="mini" data-act="day-up" ${di===0?'disabled':''} aria-label="Move workout up">↑</button><button type="button" class="mini" data-act="day-down" ${di===rDraft.length-1?'disabled':''} aria-label="Move workout down">↓</button><button type="button" class="mini danger" data-act="day-del" ${d.id===active?'disabled':''} aria-label="Delete workout">🗑</button></div></div>
+  <div class="rday-row2"><select class="txt sel" data-act="weekday" aria-label="Day of the week">${['<option value="">No set day</option>',...WEEKDAYS.map((w,i)=>`<option value="${i}" ${d.weekday===i?'selected':''}>${w}</option>`)].join('')}</select><span class="small-note">${d.ex.length} exercises · ${sets} sets${d.weekday!=null&&wdCount[d.weekday]>1?' · <b class="warnTxt">another workout is also on '+WEEKDAYS[d.weekday]+'</b>':''}${d.id===active?' · <b class="okTxt">in progress now</b>':''}</span></div>
+  <button type="button" class="secondary full rtoggle" data-act="toggle">${open?'▴ Hide exercises':'▾ Edit exercises'}</button>
+  ${open?`<div class="rex-list">${d.ex.map((e,i)=>rexHtml(e,i,d.ex.length)).join('')||'<p class="small-note">No exercises yet.</p>'}<button type="button" class="secondary full" data-act="ex-add" style="margin-top:10px">＋ Add exercise</button></div>`:''}</section>`}).join('');
+}
+function rCtx(el){const dayEl=el.closest('[data-rday]');const d=dayEl?rDraft.find(x=>x.id===dayEl.dataset.rday):null;const exEl=el.closest('[data-rex]');const ei=d&&exEl?d.ex.findIndex(e=>e[0]===exEl.dataset.rex):-1;return {d,di:d?rDraft.indexOf(d):-1,ei,e:ei>=0?d.ex[ei]:null}}
+$('routineDays').addEventListener('click',ev=>{const b=ev.target.closest('button[data-act]');if(!b||b.disabled)return;const {d,di,ei,e}=rCtx(b);if(!d)return;const act=b.dataset.act;
+ if(act==='day-up'&&di>0)[rDraft[di-1],rDraft[di]]=[rDraft[di],rDraft[di-1]];
+ else if(act==='day-down'&&di<rDraft.length-1)[rDraft[di+1],rDraft[di]]=[rDraft[di],rDraft[di+1]];
+ else if(act==='day-del'){if(rDraft.length===1){toast('You need at least one workout');return}if(!confirm(`Delete the workout "${d.title}"?\n\nPast workouts and exercise history are kept.`))return;rDraft.splice(di,1)}
+ else if(act==='toggle'){rOpen.has(d.id)?rOpen.delete(d.id):rOpen.add(d.id)}
+ else if(act==='ex-up'&&ei>0)[d.ex[ei-1],d.ex[ei]]=[d.ex[ei],d.ex[ei-1]];
+ else if(act==='ex-down'&&ei>=0&&ei<d.ex.length-1)[d.ex[ei+1],d.ex[ei]]=[d.ex[ei],d.ex[ei+1]];
+ else if(act==='ex-del'&&e){if(!confirm(`Remove ${e[1]} from ${d.title}?\n\nIts history and progression are kept.`))return;d.ex.splice(ei,1)}
+ else if((act==='sets-inc'||act==='sets-dec')&&e){const old=e[2],n=Math.min(MAX_SETS,Math.max(1,old+(act==='sets-inc'?1:-1)));if(n===old)return;e[2]=n;e[3]=scaleGoal(e[3],old,n);toast(`${n} sets · rep goal adjusted to ${e[3]} (change it if you like)`)}
+ else if(act==='ex-add'){openPicker({exclude:new Set(d.ex.map(x=>x[0])),onPick:item=>{d.ex.push(item);rOpen.add(d.id);renderRoutine();toast(`Added ${shortName(item[1])} to ${d.title}`)}});return}
+ renderRoutine();
+});
+$('routineDays').addEventListener('change',ev=>{const el=ev.target;const act=el.dataset.act;if(!act)return;const {d,e}=rCtx(el);if(!d)return;
+ if(act==='title'){const v=el.value.trim();if(!v){toast('Workout name can’t be empty');el.value=d.title;return}d.title=v.slice(0,60);return}
+ if(act==='weekday'){d.weekday=el.value===''?null:Number(el.value);renderRoutine();return}
+ if(!e)return;
+ if(act==='name'){const v=el.value.trim();if(!v){toast('Exercise name can’t be empty');el.value=e[1];return}let n=0;for(const day of rDraft)for(const x of day.ex)if(x[0]===e[0]){x[1]=v.slice(0,80);n++}if(n>1)toast(`Renamed on all ${n} days (same exercise, shared progression)`);renderRoutine();return}
+ const k={goal:3,inc:4,rest:5}[act];if(!k)return;const v=Number(el.value);
+ const ok=act==='goal'?Number.isInteger(v)&&v>=1&&v<=999:act==='inc'?Number.isFinite(v)&&v>0&&v<=100:Number.isFinite(v)&&v>=5&&v<=1800;
+ if(!ok){toast(act==='goal'?'Rep goal must be a whole number 1–999':act==='inc'?'Increment must be more than 0 lb':'Rest must be 5–1800 seconds');el.value=e[k];return}
+ e[k]=act==='inc'?v:Math.round(v);
+});
+$('addDay').addEventListener('click',()=>{const used=new Set(rDraft.map(d=>d.weekday));const free=[1,2,3,4,5,6,0].find(w=>!used.has(w));const d={id:newId('d-'),weekday:free??null,title:'New workout',ex:[]};rDraft.push(d);rOpen.add(d.id);renderRoutine();
+ [...document.querySelectorAll('[data-rday]')].find(n=>n.dataset.rday===d.id)?.scrollIntoView({block:'start'});toast('Workout added — name it and add exercises')});
+$('resetRoutine').addEventListener('click',()=>{if(!confirm('Replace your routine with the original VOLT program?\n\nYour workout history is kept. Tap Save afterwards to apply, or Cancel to back out.'))return;const keep=data.activeSession?.dayId;rDraft=clone(DEFAULT_ROUTINE);
+ if(keep&&!rDraft.some(d=>d.id===keep)){const cur=data.routine.find(d=>d.id===keep);if(cur)rDraft.push(clone(cur))}rOpen=new Set();renderRoutine();toast('Original program loaded — tap Save to keep it')});
+$('routineSave').addEventListener('click',saveRoutine);$('routineCancel').addEventListener('click',cancelRoutine);
+
+/* ---- exercise picker ---- */
+let pickerCtx=null;
+function exerciseLibrary(){const src=rDraft||data.routine;const lib=new Map();for(const d of src)for(const e of d.ex)if(!lib.has(e[0]))lib.set(e[0],clone(e));
+ for(const h of data.history.slice().sort((a,b)=>b.timestamp-a.timestamp))if(!lib.has(h.movement)){const sets=clampInt((h.reps||[]).length,1,MAX_SETS,3);lib.set(h.movement,sanitizeEx([h.movement,h.name||h.movement,sets,h.goal,h.increment,90]))}
+ return [...lib.values()].filter(Boolean).sort((a,b)=>a[1].localeCompare(b[1]))}
+function openPicker(ctx){pickerCtx=ctx;$('pickerSearch').value='';$('newExName').value='';openSheet('pickerSheet');renderPicker()}
+function closePicker(){pickerCtx=null;closeSheet('pickerSheet')}
+function renderPicker(){const q=$('pickerSearch').value.trim().toLowerCase();const lib=exerciseLibrary().filter(e=>!q||e[1].toLowerCase().includes(q));
+ $('pickerList').innerHTML=lib.map(e=>{const inDay=pickerCtx.exclude.has(e[0]);const last=historyLatest(e[0]);return `<button type="button" class="pick-item" data-pick-ex="${safe(e[0])}" ${inDay?'disabled':''}><b>${safe(e[1])}</b><span>${e[2]} sets · goal ${e[3]} · +${fmt(e[4])} lb · rest ${mmss(e[5])}${last?` · last ${fmt(last.weight)} lb`:''}${inDay?' · already in this workout':''}</span></button>`}).join('')||'<p class="small-note">No matches — create it above.</p>'}
+function pickItem(item){const ctx=pickerCtx;closePicker();ctx?.onPick(item)}
+$('pickerList').addEventListener('click',ev=>{const b=ev.target.closest('[data-pick-ex]');if(!b||b.disabled)return;const item=exerciseLibrary().find(e=>e[0]===b.dataset.pickEx);if(item)pickItem(clone(item))});
+$('pickerSearch').addEventListener('input',renderPicker);
+$('newExAdd').addEventListener('click',()=>{const name=$('newExName').value.trim().slice(0,80);if(!name){toast('Type a name for the new exercise');$('newExName').focus();return}
+ const existing=exerciseLibrary().find(e=>e[1].toLowerCase()===name.toLowerCase());
+ if(existing){if(pickerCtx.exclude.has(existing[0])){toast('That exercise is already in this workout');return}pickItem(clone(existing));return}
+ const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,24)||'ex';pickItem([newId('x-'+slug+'-'),name,...NEW_EX_DEFAULT])});
+$('newExName').addEventListener('keydown',e=>{if(e.key==='Enter')$('newExAdd').click()});
+$('pickerClose').addEventListener('click',closePicker);
 
 /* ================= rest timer ================= */
 const DONE_SHOW_MS=8000,LATE_ALERT_MS=60000,RING_C=2*Math.PI*52;
 let restMini=false;
 function restState(){return data.activeSession?.rest||null}
 function restRemaining(r=restState(),now=Date.now()){if(!r)return 0;if(r.finishedAt)return 0;if(r.pausedRemaining!=null)return Math.max(0,r.pausedRemaining);return Math.max(0,r.endsAt-now)}
+function restPlanEx(r){const d=activeDay();return d?data.activeSession.plan.find(e=>slotId(d,e)===r.slot)||null:null}
 function startRest(slot,setIndex){
- const a=data.activeSession;if(!a)return;const d=dayById(a.dayId),e=d.ex.find(x=>slotId(d,x)===slot);if(!e)return;
- const ms=Math.round(settings(d,e).rest)*1000,now=Date.now();
+ const a=data.activeSession,d=activeDay();if(!a||!d)return;const e=a.plan.find(x=>slotId(d,x)===slot);if(!e)return;
+ const ms=Math.round(e[5])*1000,now=Date.now();
  a.rest={id:now,slot,name:e[1],setIndex,setCount:e[2],totalMs:ms,endsAt:now+ms,pausedRemaining:null,finishedAt:null};
  restMini=false;persist();closeRestNotifications();scheduleRestAlerts();renderRest();
 }
@@ -373,13 +535,14 @@ function restLoop(){const r=restState();if(!r)return;
  if(!r.finishedAt&&r.pausedRemaining==null&&Date.now()>=r.endsAt){completeRest();return}
  if(r.finishedAt&&Date.now()-r.finishedAt>DONE_SHOW_MS&&document.visibilityState==='visible'){data.activeSession.rest=null;persist();renderRest();return}
  updateRestUI()}
-function nextSetText(r){if(r.setIndex+1<r.setCount)return `Next: ${r.name.replace(/\s*\(.*\)$/,'')} · set ${r.setIndex+2} of ${r.setCount}`;
- const a=data.activeSession,d=a&&dayById(a.dayId);if(!d)return '';const idx=d.ex.findIndex(e=>slotId(d,e)===r.slot);const nx=d.ex[idx+1];return nx?`Next exercise: ${nx[1]}`:'That was the last exercise — finish when ready'}
+function nextSetText(r){const a=data.activeSession,d=activeDay();if(!a||!d)return '';const plan=a.plan,idx=plan.findIndex(e=>slotId(d,e)===r.slot),e=plan[idx];const count=e?e[2]:r.setCount;
+ if(e&&r.setIndex+1<count)return `Next: ${shortName(e[1])} · set ${r.setIndex+2} of ${count}`;
+ if(idx<0)return '';const nx=plan[idx+1];return nx?`Next exercise: ${nx[1]}`:'That was the last exercise — finish when ready'}
 function renderRest(){const r=restState(),dock=$('restDock');const show=!!(r&&data.activeSession);
  dock.classList.toggle('hide',!show);document.body.classList.toggle('has-rest',show);document.body.classList.toggle('rest-mini',show&&restMini);
  if(!show)return;
- dock.classList.toggle('mini',restMini);
- $('restLabel').textContent=r.finishedAt?(r.late?`Rest finished while you were away`:`Rest over — ${r.name.replace(/\s*\(.*\)$/,'')}`):`${r.name.replace(/\s*\(.*\)$/,'')} · set ${r.setIndex+1}/${r.setCount} ✓`;
+ dock.classList.toggle('mini',restMini);const count=restPlanEx(r)?.[2]??r.setCount;
+ $('restLabel').textContent=r.finishedAt?(r.late?`Rest finished while you were away`:`Rest over — ${shortName(r.name)}`):`${shortName(r.name)} · set ${r.setIndex+1}/${count} ✓`;
  $('restNext').textContent=nextSetText(r);
  $('restSkip').textContent=r.finishedAt?'Dismiss':'Skip Rest';
  $('restCollapse').setAttribute('aria-label',restMini?'Expand rest timer':'Minimize rest timer');
@@ -397,7 +560,9 @@ function updateRestUI(){const r=restState();if(!r)return;const dock=$('restDock'
 let actx=null,scheduledChime=null;
 function unlockAudio(){try{if(!actx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return;actx=new C()}if(actx.state==='suspended')actx.resume().catch(()=>{})}catch(e){}}
 function chimeAt(t){const parts=[];const notes=[[0,880,.16],[.22,880,.16],[.44,1320,.5]];
- for(const [off,f,len] of notes){const o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t+off);g.gain.exponentialRampToValueAtTime(0.7,t+off+0.015);g.gain.exponentialRampToValueAtTime(0.0001,t+off+len);o.connect(g);g.connect(actx.destination);o.start(t+off);o.stop(t+off+len+0.05);parts.push({o,g})}
+ const vol=Math.max(0,Math.min(100,Number(data.prefs.volume??80)))/100;if(vol<=0)return parts;
+ const sharp=!!data.prefs.sharpTone,peak=Math.max(0.001,(sharp?0.42:0.95)*vol);
+ for(const [off,f,len] of notes){const o=actx.createOscillator(),g=actx.createGain();o.type=sharp?'square':'sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,t+off);g.gain.exponentialRampToValueAtTime(peak,t+off+0.015);g.gain.exponentialRampToValueAtTime(0.0001,t+off+len);o.connect(g);g.connect(actx.destination);o.start(t+off);o.stop(t+off+len+0.05);parts.push({o,g})}
  return parts}
 function cancelScheduledChime(){if(!scheduledChime)return;for(const {o,g} of scheduledChime.parts){try{g.disconnect()}catch(e){}try{o.stop(0)}catch(e){}}scheduledChime=null}
 function playChimeNow(){unlockAudio();if(!actx)return;chimeAt(actx.currentTime+0.05);window.__voltTest.chimes++}
@@ -429,17 +594,14 @@ async function syncWakeLock(){const want=!!(data.prefs.wakeLock&&data.activeSess
  else if(!want&&wakeLock){try{await wakeLock.release()}catch(e){}wakeLock=null}}
 
 /* ================= settings sheet ================= */
-function openSettings(){renderSettings();$('settingsSheet').classList.remove('hide');document.body.style.overflow='hidden'}
-function closeSettings(){$('settingsSheet').classList.add('hide');document.body.style.overflow='';render()}
+function openSettings(){renderSettings();openSheet('settingsSheet')}
+function closeSettings(){closeSheet('settingsSheet');render()}
 function renderSettings(){
  document.querySelectorAll('[data-pref]').forEach(inp=>{inp.checked=!!data.prefs[inp.dataset.pref]});
+ $('volumeSlider').value=data.prefs.volume;$('volumeLabel').textContent=data.prefs.volume+'%';
  $('vibrateNote').textContent='vibrate' in navigator?'Vibrate when rest ends (while the app is on screen).':'Vibration is not supported in this browser.';
  const p=notifPermission();
  $('notifyNote').textContent=p==='unsupported'?'Notifications are not supported here. Install the app from Chrome to use them.':p==='denied'?'Blocked. To allow: Android Settings → Apps → Chrome (or VOLT) → Notifications → Allow, then turn this on again.':'Show a notification when rest ends while the app is in the background (best effort).';
- $('restEditor').innerHTML=days.map(d=>`<div class="day">${safe(d.name)} — ${safe(d.title)}</div>`+d.ex.map(e=>`<div class="row"><span>${safe(e[1])}<br><small class="small-note">default ${mmss(e[5])}</small></span><input type="number" min="5" max="1800" step="5" inputmode="numeric" data-rest-slot="${safe(slotId(d,e))}" value="${settings(d,e).rest}" aria-label="Rest seconds for ${safe(e[1])} on ${safe(d.name)}"></div>`).join('')).join('');
- $('restEditor').querySelectorAll('[data-rest-slot]').forEach(inp=>inp.addEventListener('change',()=>{const v=Number(inp.value),slot=inp.dataset.restSlot,[dayId,mid]=slot.split('::'),d=dayById(dayId),e=d.ex.find(x=>x[0]===mid);
-  if(!Number.isFinite(v)||v<5||v>1800){toast('Rest must be between 5 and 1800 seconds');inp.value=settings(d,e).rest;return}
-  data.settings[slot]??={};data.settings[slot].rest=Math.round(v);persist();toast(`${e[1]} (${d.name}): rest ${mmss(v)}`)}));
  const sw='serviceWorker' in navigator&&navigator.serviceWorker.controller;
  $('storageStatus').innerHTML=[
   [idbOK,'Main database (IndexedDB): '+(idbOK?'working':'unavailable')],
@@ -460,10 +622,13 @@ document.querySelectorAll('[data-pref]').forEach(inp=>inp.addEventListener('chan
  }
  data.prefs[key]=inp.checked;persist();
  if(key==='sound'&&inp.checked)unlockAudio();
- if(['sound','notify'].includes(key))scheduleRestAlerts();
+ if(['sound','notify','sharpTone'].includes(key))scheduleRestAlerts();
+ if(key==='sharpTone'&&data.prefs.sound){unlockAudio();playChimeNow()}
  if(key==='wakeLock')syncWakeLock();
  renderSettings();
 }));
+$('volumeSlider').addEventListener('input',e=>{$('volumeLabel').textContent=e.target.value+'%'});
+$('volumeSlider').addEventListener('change',e=>{data.prefs.volume=Number(e.target.value);persist();scheduleRestAlerts();unlockAudio();if(data.prefs.sound&&data.prefs.volume>0)playChimeNow()});
 $('testAlert').addEventListener('click',()=>{unlockAudio();if(data.prefs.sound)playChimeNow();else toast('Sound is turned off');if(data.prefs.vibrate)vibrateNow()});
 $('testNotify').addEventListener('click',async()=>{
  let p=notifPermission();if(p==='unsupported'){toast('Notifications are not supported here');return}
@@ -472,24 +637,32 @@ $('testNotify').addEventListener('click',async()=>{
  const reg=await swRegistration();if(!reg){toast('Service worker not ready — reload the app once while online');return}
  swPost({type:'rest-schedule',endsAt:Date.now()+10000,id:'test',title:'VOLT test notification',body:'Notifications are working. ⚡',force:true});
  toast('Lock your phone now — test notification in 10 seconds',4000)});
-$('resetRest').addEventListener('click',()=>{if(!confirm('Reset every exercise rest time to the routine default?'))return;for(const k of Object.keys(data.settings))if(data.settings[k])delete data.settings[k].rest;persist();renderSettings();toast('Rest times reset')});
 $('settingsBtn').addEventListener('click',openSettings);$('closeSettings').addEventListener('click',closeSettings);
+$('settingsRoutine').addEventListener('click',()=>openRoutine(null));
 $('settingsSheet').addEventListener('click',e=>{if(e.target===$('settingsSheet'))closeSettings()});
 
-/* ================= backups ================= */
+/* ================= backups & deletion ================= */
 function download(content,filename,type){const file=new Blob([content],{type}),url=URL.createObjectURL(file),link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),4000)}
 $('exportBackup').addEventListener('click',()=>{data.prefs.lastExportAt=Date.now();persist();download(JSON.stringify({format:'VOLT_TOTAL_REP_V3',appVersion:APP_VERSION,exportedAt:new Date().toISOString(),...data},null,2),'VOLT_backup_'+new Date().toISOString().slice(0,10)+'.json','application/json');renderBackupNote();toast('Backup saved to your Downloads')});
 $('importBackup').addEventListener('click',()=>$('backupFile').click());
 $('backupFile').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{
  const json=JSON.parse(await file.text());
  if(!['VOLT_TOTAL_REP_V1','VOLT_TOTAL_REP_V2','VOLT_TOTAL_REP_V3'].includes(json.format)||!Array.isArray(json.history)||typeof json.settings!=='object')throw Error('This is not a VOLT backup file');
- if(!confirm(`Replace the data in this app with this backup?\n\nBackup contains ${json.history.length} exercise logs and ${(json.sessions||[]).length} workouts.\nThis app currently has ${data.history.length} logs and ${data.sessions.length} workouts.\n\nA safety copy of the current data is kept inside the app.`))return;
+ if(!confirm(`Replace the data in this app with this backup?\n\nBackup contains ${json.history.length} exercise logs and ${(json.sessions||[]).length} workouts${Array.isArray(json.routine)?' plus its routine':''}.\nThis app currently has ${data.history.length} logs and ${data.sessions.length} workouts.\n\nA safety copy of the current data is kept inside the app.`))return;
  try{await idbSet('beforeImport',JSON.stringify(data))}catch(e){}
  const keepPrefs=data.prefs;const {format,exportedAt,appVersion,...rest}=json;
- cancelRestAlerts();data=normalize({...rest,prefs:{...keepPrefs,...(json.prefs||{}),notify:keepPrefs.notify}});migratedFromLegacy=false;latestResult=null;persist();await flushIDB();render();toast('Backup imported ✓',3500);
+ cancelRestAlerts();setData(normalize({...rest,prefs:{...keepPrefs,...(json.prefs||{}),notify:keepPrefs.notify}}));migratedFromLegacy=false;latestResult=null;persist();await flushIDB();render();toast('Backup imported ✓',3500);
  }catch(e){alert('Import failed: '+e.message)}finally{event.target.value=''}});
-$('exportCsv').addEventListener('click',()=>{const rows=[['Date','Workout ID','Workout Day','Exercise','Weight lb','Set Reps','Total Reps','Goal','Hit Goal','Next Weight lb'],...data.history.slice().sort((a,b)=>a.timestamp-b.timestamp).map(h=>[new Date(h.timestamp).toISOString(),h.workoutId||'',h.slot?.split('::')[0]||'',h.name,h.weight,(h.reps||[]).join(' + '),h.total,h.goal,h.hit?'YES':'NO',h.hit?Number((Number(h.weight)+Number(h.increment||0)).toFixed(2)):h.weight])];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');download(csv,'VOLT_history_'+new Date().toISOString().slice(0,10)+'.csv','text/csv')});
+$('exportCsv').addEventListener('click',()=>{const rows=[['Date','Weekday','Workout ID','Workout','Exercise','Weight lb','Set Reps','Total Reps','Goal','Hit Goal','Next Weight lb'],...data.history.slice().sort((a,b)=>a.timestamp-b.timestamp).map(h=>{const s=data.sessions.find(x=>x.id===h.workoutId);return [new Date(h.timestamp).toISOString(),weekdayOf(h.timestamp),h.workoutId||'',s?.title||dayById(h.slot?.split('::')[0])?.title||'',h.name,h.weight,(h.reps||[]).join(' + '),h.total,h.goal,h.hit?'YES':'NO',h.hit?Number((Number(h.weight)+Number(h.increment||0)).toFixed(2)):h.weight]})];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');download(csv,'VOLT_history_'+new Date().toISOString().slice(0,10)+'.csv','text/csv')});
 $('progressSelect').addEventListener('change',showProgress);
+function deleteSession(id){const s=data.sessions.find(x=>x.id===id);if(!s)return;const logs=data.history.filter(h=>h.workoutId===id).length;
+ if(!confirm(`Delete this workout?\n\n${sessionLabel(s)} · ${dateStr(s.startedAt)} · ${logs} exercise logs\n\nIts exercise logs are removed too, and weight suggestions go back to what they were before it. This cannot be undone.`))return;
+ data.sessions=data.sessions.filter(x=>x.id!==id);data.history=data.history.filter(h=>h.workoutId!==id);if(latestResult?.id===id)latestResult=null;persist();flushIDB();render();toast('Workout deleted')}
+$('sessionHistory').addEventListener('click',e=>{const b=e.target.closest('[data-del-session]');if(b)deleteSession(b.dataset.delSession)});
+$('wipeAll').addEventListener('click',async()=>{if(!confirm('Delete ALL saved workouts and exercise history on this phone?\n\nYour routine and settings are kept. Export a backup first if you want to keep anything.'))return;
+ if(prompt('Type DELETE to confirm')!=='DELETE'){toast('Nothing was deleted');return}
+ try{await idbSet('beforeReset',JSON.stringify(data))}catch(e){}
+ cancelRestAlerts();setData(normalize({prefs:data.prefs,routine:data.routine}));migratedFromLegacy=false;latestResult=null;persist();await flushIDB();closeSettings();toast('All workout history deleted — fresh start')});
 
 /* ================= wiring ================= */
 $('finishTop').addEventListener('click',finishWorkout);$('finishBottom').addEventListener('click',finishWorkout);$('discardBtn').addEventListener('click',discardWorkout);
@@ -515,10 +688,11 @@ if('serviceWorker' in navigator&&location.protocol!=='file:'){
 $('reloadBtn').addEventListener('click',async()=>{await flushIDB();location.reload()});
 $('laterBtn').addEventListener('click',()=>$('updateBanner').classList.add('hide'));
 
-loadData().catch(()=>{data=normalize(null);loaded=true}).then(()=>{
+loadData().catch(()=>{setData(normalize(null));loaded=true}).then(()=>{
+ selectedDay=(todayDay()||days[0]).id;
  render();
  const a=data.activeSession;
- if(a){toast(`Resumed your ${dayById(a.dayId).name} workout`);restLoop();scheduleRestAlerts()}
+ if(a){toast(`Resumed your ${dayLabel(activeDay())} workout`);restLoop();scheduleRestAlerts()}
 });
 </script>
 </body>
