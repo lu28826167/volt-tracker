@@ -77,9 +77,9 @@ Open that address on your computer once to check it loads. If you see a 404 erro
    - Tap the **Install** button at the top of the app, **or**
    - Tap Chrome's **⋮** menu → **Add to Home screen** → **Install** (it may say **Install app**).
 4. Find the **VOLT** icon on your home screen or in the app drawer. Open it from there. It opens full-screen with no address bar.
-5. **Import your old history:** on the dashboard tap **Import backup** (or scroll to **Backups → Import backup**). Pick the `.json` file from Part 1, then confirm. Your workouts, logs, goals and increments come back.
-6. Open **⚙︎ Settings** and set up the rest timer:
-   - **Sound** and **Vibration**: on by default.
+5. **Import your old history:** on the Workout screen tap **Import backup →** (or go to the **History** tab → **Import backup**). Pick the `.json` file from Part 1, then confirm. Your workouts, logs, goals and increments come back.
+6. Open **Settings** (bottom tab) and set up the rest timer:
+   - **Sound** and **Vibration**: on by default. **Chime volume** and **Sharp tone** are there too.
    - **Notifications**: turn on and tap **Allow** when Android asks.
    - Tap **Test notification (10 s)**, then lock your phone. You should see a notification.
    - Optional: **Keep screen on during workouts**. This is the most reliable way to get rest alerts on time.
@@ -87,10 +87,29 @@ Open that address on your computer once to check it loads. If you see a 404 erro
 
 ---
 
+## How the app is laid out
+
+- **Workout tab:** the day chips at the top (today has a dot), today's exercises, and a big **Start Workout** button. Each exercise shows its suggested weight: **▲ green** = you hit your rep goal last time, so go heavier. **= amber** = you missed it, so keep the same weight. **new** = no history yet.
+- **During a workout:** each exercise has a Hevy-style table: **SET · PREVIOUS · LBS · REPS · ✓**.
+  - **PREVIOUS** shows what you did last time for that set (e.g. `45 × 10`).
+  - **LBS** is pre-filled in grey with the suggested weight for that set. Type to change it, or leave it and tap ✓ to use the suggestion. Each set can have its own weight.
+  - A coloured chip under the exercise name tells you straight away whether you hit last time (**▲ Hit 30/30 last time → +5 lb**) or missed (**● Missed 27/30 last time → same weight**).
+  - The line under the sets keeps a running total (**22 / 30 reps**) and turns green with **✓ Goal hit → +5 lb next time** once you reach the goal.
+  - **⋮** on an exercise opens its options: rest time, rep goal, weight step, move up/down, remove last set, remove exercise. Tapping the **⏱ rest chip** opens the same options.
+- **History tab:** past workouts (tap one for details or to delete it), exercise progress, and backups.
+- **Settings tab:** rest timer options, routine editor, storage status.
+
+## How progression works
+
+- Each exercise has one **total-rep goal**, the sum of reps across all its sets. There are no per-set rep targets.
+- Hit the goal → next time every set is suggested **+ the weight step** (e.g. 45/50/50 → 50/55/55). Miss it → the same weights are suggested again.
+- **Exercises with the same name AND the same number of sets share progression.** Friday's and Sunday's 4-set *Lateral Raise (Machine)* are one progression; Tuesday's 5-set one is separate. The same goes for any exercise that appears on more than one day.
+- If you change the number of sets for an exercise, it joins the progression of any other exercise with that name and set count, or starts fresh if there isn't one.
+
 ## Using the rest timer
 
 - Type your reps as usual. Typing **never** starts the timer.
-- When you finish a set, tap the **✓** under it. The rest countdown starts right away using that exercise's rest time.
+- When you finish a set, tap its **✓**. The rest countdown starts right away using that exercise's rest time.
 - The big ring sits at the bottom of the screen, and you can keep logging while it runs. Its buttons:
   - **−15s / +15s** adjust the time.
   - **Pause / Resume** stop and restart the countdown.
@@ -98,7 +117,7 @@ Open that address on your computer once to check it loads. If you see a 404 erro
   - **▾** shrinks it to a small bar.
 - Tap ✓ again to un-mark a set. This doesn't start a timer.
 - At zero you get a chime and vibration, and the ring shows **GO!**
-- **Change rest times:** tap **✎ Edit routine** (home screen or ⚙︎ Settings) and change *Rest (s)* on any exercise. During a workout, you can also use "Edit exercise" on that exercise. Each day's copy of an exercise has its own rest time.
+- **Change rest times:** tap the **⏱** chip on an exercise during a workout, or use **Edit** on the Workout tab → *Rest (s)*. Each day's copy of an exercise has its own rest time.
 
 **Starting rest times.** Your original file had no rest times, so these are starting values you can change:
 - 150 s: main presses, pulldowns and rows
@@ -108,27 +127,27 @@ Open that address on your computer once to check it loads. If you see a 404 erro
 
 ## Editing your routine
 
-Tap **✎ Edit routine** on the home screen (or in ⚙︎ Settings). Make your changes, then tap **Save**. **Cancel** throws away everything you changed since opening the editor.
+Tap **Edit** next to the workout name on the Workout tab (or **Settings → Edit routine**). Make your changes, then tap **Save**. **Cancel** throws away everything you changed since opening the editor.
 
 - **Rename a workout:** tap its name (e.g. "Pull A") and type a new one.
 - **Change its day of the week:** use the day dropdown. Choose *No set day* for a flexible workout. The app auto-selects today's workout based on these days.
 - **Reorder workouts:** use the ↑ ↓ next to each workout. 🗑 deletes a workout. Your past workouts stay in history.
-- **Add a workout day:** tap **＋ Add workout day** at the bottom.
+- **Add a workout day:** tap **+ Add workout day** at the bottom.
 - **Exercises:** tap **▾ Edit exercises** on a workout. For each exercise you can:
-  - rename it (this renames it on every day it appears, since it's the same exercise with the same progression)
+  - **rename it.** If the same exercise is on other days, you're asked whether to rename it everywhere (it keeps sharing progression, and its history moves to the new name) or only on this day (it starts its own progression).
   - change **Sets** with − / +. The rep goal adjusts in proportion, and you can then type any goal you want.
-  - change the **Rep goal**, the **weight increment (+ lb)** and the **Rest** time
-  - **↑ Move up / ↓ Move down** to reorder, or **✕** to remove it. Its history is kept.
-- **＋ Add exercise:** create a new one by name, or pick from your existing exercises. Picking an existing one keeps its weight history, so suggestions continue where you left off.
+  - change the **Rep goal**, the **weight step (+ lb)** and the **Rest** time
+  - **↑ Up / ↓ Down** to reorder, or **✕** to remove it. Its history is kept.
+- **+ Add exercise:** create a new one by name, or pick from your existing exercises. Picking an existing one keeps its weight history, so suggestions continue where you left off.
 - **Reset to original VOLT program** brings back the original 95-set routine. Your workout history is kept.
 
 **During a workout** (like Hevy):
-- **＋ Add set** sits under each exercise's sets.
-- **Edit exercise** on each exercise lets you remove the last set, move the exercise up or down, remove it, or change its goal, increment and rest.
-- **＋ Add exercise to this workout** is at the bottom of the list.
-- Goal, increment and rest changes are saved to your routine right away. Set, order and exercise changes only apply to today's workout. When you tap Finish, the app asks whether to save them to your routine too.
+- **+ Add Set** sits under each exercise's sets.
+- **⋮** lets you remove the last set, move the exercise up or down, or remove it.
+- **+ Add Exercise** is at the bottom of the list.
+- Goal, weight step and rest changes are saved to your routine right away. Set, order and exercise changes only apply to today's workout. When you tap Finish, the app asks whether to save them to your routine too.
 
-**Deleting workouts:** open a workout under **Workout history**, then tap **🗑 Delete this workout**. Its logs are removed, and weight suggestions go back to what they were before it. To wipe all history after testing, go to **⚙︎ Settings → Delete all workout history**. This keeps your routine and settings, and asks you to type DELETE first.
+**Deleting workouts:** in the **History** tab, tap a workout, then **Delete this workout**. Its logs are removed, and weight suggestions go back to what they were before it. To wipe all history after testing, go to **Settings → Delete all workout history**. This keeps your routine and settings, and asks you to type DELETE first.
 
 ### What Android allows (honest limits)
 
@@ -144,7 +163,7 @@ Tap **✎ Edit routine** on the home screen (or in ⚙︎ Settings). Make your c
 
 - Your data is saved **on your phone only**, in two places inside the app: the main database (IndexedDB) and a backup copy (local storage). It's saved every time you type, so closing the app, locking the phone, restarting the phone or refreshing the page doesn't lose anything. An unfinished workout reopens exactly where you left it.
 - ⚠️ **These actions CAN erase your records:** clearing Chrome's browsing data or site data, clearing storage for `github.io`, "Clear storage" on Chrome in Android Settings, uninstalling the VOLT app, or a factory reset.
-- **Export a backup every week or two:** Backups → **Export backup (.json)**. Save the file to Google Drive or email it to yourself. The app shows when you last exported.
+- **Export a backup every week or two:** History tab → **Export backup**. Save the file to Google Drive or email it to yourself. The app shows when you last exported.
 - To restore on any phone: install VOLT → **Import backup** → pick the file.
 
 ---
@@ -155,7 +174,7 @@ Your history lives on your phone, not in the GitHub files, so replacing the file
 
 1. (Recommended) Export a backup first.
 2. In your GitHub repository: **Add file → Upload files**, drag in the new file(s) with the **same names**, then **Commit changes**. GitHub replaces the old versions.
-3. If `sw.js` was changed, its first line of code (`const VERSION = 'volt-v3.2.0'`) should get a new number, e.g. `volt-v3.2.1`. That tells phones to refresh the offline copy.
+3. If `sw.js` was changed, its first line of code (`const VERSION = 'volt-v4.0.0'`) should get a new number, e.g. `volt-v4.0.1`. That tells phones to refresh the offline copy.
 4. Wait about 1–2 minutes, then open VOLT while online. You'll get the new version, or a **"New version installed — Reload"** banner. Tap Reload. Your workout in progress is saved first.
 
 **Don't** rename the repository or create a different one. Different address = a different app with empty storage. If you ever must move, export a backup first and import it in the new one.
